@@ -3,7 +3,7 @@
     "CoreConsoleApp": {
       "commandName": "Project",
       "environmentVariables": {
-        "Environment": "Development"
+        "EnvVar": "Development"
       }
     }
   }

@@ -5,7 +5,11 @@ namespace StandardClassLibrary
 {
     public static class AppConfig
     {
-        private static readonly IConfigurationRoot Config = new ConfigurationBuilder().AddJsonFile($"appsettings.json").Build();
+        public static string EnvVar { get; } = Environment.GetEnvironmentVariable("EnvVar");
+        private static readonly IConfigurationRoot Config = new ConfigurationBuilder()
+            .AddJsonFile($"appsettings.json", true)
+            .AddJsonFile($"appsettings.{EnvVar}.json", true)
+            .Build();
 
         public static T GetValue<T>(string path)
         {
