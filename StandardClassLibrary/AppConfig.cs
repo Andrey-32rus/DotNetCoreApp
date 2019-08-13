@@ -5,18 +5,18 @@ namespace StandardClassLibrary
 {
     public static class AppConfig
     {
-        private static readonly IConfigurationRoot Config = new ConfigurationBuilder().AddJsonFile($"conf.json").Build();
+        private static readonly IConfigurationRoot Config = new ConfigurationBuilder().AddJsonFile($"appsettings.json").Build();
 
-        public static string GetValue(string path)
+        public static T GetValue<T>(string path)
         {
             try
             {
-                return Config[path];
+                return Config.GetValue<T>(path);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return default(T);
             }
         }
 

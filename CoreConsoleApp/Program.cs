@@ -8,8 +8,8 @@ namespace CoreConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine(AppConfig.GetConnectionString("Connection1"));
-            Console.WriteLine(AppConfig.GetValue("Family"));
-            Console.WriteLine(AppConfig.GetValue("Name"));
+            Console.WriteLine(AppConfig.GetValue<string>("Family"));
+            Console.WriteLine(AppConfig.GetValue<string>("Name"));
         }
     }
 }
