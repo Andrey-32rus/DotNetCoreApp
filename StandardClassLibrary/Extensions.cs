@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace StandardClassLibrary
 {
@@ -11,6 +12,16 @@ namespace StandardClassLibrary
         public static ulong ToUnixTimestamp(this DateTime dt)
         {
             return (ulong)(dt.ToUniversalTime() - Epoch).TotalSeconds;
+        }
+
+        public static string ToJson<T>(this T src)
+        {
+            return JsonConvert.SerializeObject(src);
+        }
+
+        public static T DeepClone<T>(this T src) where T : class
+        {
+            return JsonConvert.DeserializeObject<T>(src.ToJson());
         }
     }
 }
