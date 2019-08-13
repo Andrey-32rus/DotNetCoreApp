@@ -12,6 +12,7 @@ namespace CoreConsoleApp
             Console.WriteLine(AppConfig.GetValue<string>("Family"));
             Console.WriteLine(AppConfig.GetValue<string>("Name"));
             Console.WriteLine(AppConfig.GetValue<int>("Age"));
+            Console.WriteLine($"Now is: {Fnc.ToUnixTimestamp(DateTime.Now)}");
 
             Console.ReadLine();
         }
