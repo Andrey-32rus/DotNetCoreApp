@@ -29,4 +29,10 @@
     <ProjectReference Include="..\StandardClassLibrary\StandardClassLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -14,6 +14,8 @@ namespace CoreConsoleApp
             Console.WriteLine(AppConfig.GetValue<int>("Age"));
             Console.WriteLine($"Now is: {DateTime.Now.ToUnixTimestamp()}");
 
+            MyLogger.Log("LOG");
+
             Console.ReadLine();
         }
     }
