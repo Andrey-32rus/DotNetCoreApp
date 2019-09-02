@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json.Linq;
 
 namespace StandardClassLibrary
 {
@@ -20,6 +21,12 @@ namespace StandardClassLibrary
         public static DateTime FromUnixTimestampToLocal(ulong timestamp)
         {
             return FromUnixTimestamp(timestamp).ToLocalTime();
+        }
+
+        public static string JsonPath(string json, string jsonPath)
+        {
+            var js = JObject.Parse(json);
+            return js.SelectToken(jsonPath).ToString();
         }
     }
 }
