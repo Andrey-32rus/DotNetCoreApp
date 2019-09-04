@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
     <ProjectReference Include="..\StandardClassLibrary\StandardClassLibrary.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,8 @@
 ﻿using StandardClassLibrary;
 using System;
 using System.Linq.Expressions;
+using DependencyInjection;
+using DependencyInjection.WriterDI;
 
 namespace CoreConsoleApp
 {
@@ -23,7 +25,7 @@ namespace CoreConsoleApp
             Console.WriteLine($"Now is: {DateTime.Now.ToUnixTimestamp()}");
         }
 
-        static void Main(string[] args)
+        private static void JsonPathTest()
         {
             string json = @"{
                               'Stores': [
@@ -58,6 +60,17 @@ namespace CoreConsoleApp
 
             string res = Fnc.JsonPath(json, "$.Manufacturers[?(@.Name == 'Contoso')].Products");
             Console.WriteLine(res);
+        }
+
+        private static void DITest()
+        {
+            var writer = DI.GetService<IWriter>();
+            writer.Write();
+        }
+
+        static void Main(string[] args)
+        {
+            DITest();
             Console.ReadLine();
         }
     }
