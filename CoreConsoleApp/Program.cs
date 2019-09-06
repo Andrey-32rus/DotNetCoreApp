@@ -3,6 +3,8 @@ using System;
 using System.Linq.Expressions;
 using DependencyInjection;
 using DependencyInjection.WriterDI;
+using RedisWrapper;
+using StackExchange.Redis;
 
 namespace CoreConsoleApp
 {
@@ -70,7 +72,10 @@ namespace CoreConsoleApp
 
         static void Main(string[] args)
         {
-            DITest();
+            var redis = new RedisWrap("localhost");
+            var db1 = redis.GetDataBase(0);
+            var stringValue = db1.StringGet("string");
+            Console.WriteLine(stringValue.ToString());
             Console.ReadLine();
         }
     }
