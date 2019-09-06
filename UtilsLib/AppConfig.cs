@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
+using NLog;
 
 namespace UtilsLib
 {
@@ -19,7 +20,7 @@ namespace UtilsLib
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MyLogger.Log(e.ToString(), LogLevel.Error);
                 return default(T);
             }
         }
@@ -32,7 +33,7 @@ namespace UtilsLib
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MyLogger.Log(e.ToString(), LogLevel.Error);
                 return null;
             }
         }
