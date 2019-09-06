@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 
-namespace StandardClassLibrary
+namespace UtilsLib
 {
     public static class AppConfig
     {

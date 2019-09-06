@@ -28,7 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
     <ProjectReference Include="..\RedisWrapper\RedisWrapper.csproj" />
-    <ProjectReference Include="..\StandardClassLibrary\StandardClassLibrary.csproj" />
+    <ProjectReference Include="..\UtilsLib\UtilsLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

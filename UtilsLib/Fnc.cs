@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace StandardClassLibrary
+namespace UtilsLib
 {
     public static class Fnc
     {
