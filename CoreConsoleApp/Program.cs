@@ -65,19 +65,14 @@ namespace CoreConsoleApp
             string chanelName = "chanel";
             var redis = new RedisWrap("localhost");
             var db0 = redis.GetDataBase(0);
-            var subscriber = redis.GetSubscriber();
-            subscriber.Subscribe(chanelName, (chanel, value) =>
-            {
-                Console.WriteLine($"Chanel: {chanel}\tValue: {value}");
-            });
-            long res = subscriber.Publish(chanelName, "Hello World!!!");
+            redis.Subscribe(chanelName, (chanel, value) => Console.WriteLine($"Chanel: {chanel}\tValue: {value}"));
+            redis.Subscribe(chanelName, (chanel, value) => Console.WriteLine($"SB2 Chanel: {chanel}\tValue: {value}"));
+            long res = redis.Publish(chanelName, "Hello World!!!");
 
             while (true)
             {
                 Thread.Sleep(500);
             }
-
-            Console.ReadLine();
         }
     }
 }
