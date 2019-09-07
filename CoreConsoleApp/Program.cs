@@ -9,48 +9,6 @@ namespace CoreConsoleApp
 {
     class Program
     {
-        static T Function<T>(Func<T, T, T> fnc, T left, T right)
-        {
-            return fnc.Invoke(left, right);
-        }
-
-        private static void JsonPathTest()
-        {
-            string json = @"{
-                              'Stores': [
-                                'Lambton Quay',
-                                'Willis Street'
-                              ],
-                              'Manufacturers': [
-                                {
-                                  'Name': 'Acme Co',
-                                  'Products': [
-                                    {
-                                      'Name': 'Anvil',
-                                      'Price': 50
-                                    }
-                                  ]
-                                },
-                                {
-                                  'Name': 'Contoso',
-                                  'Products': [
-                                    {
-                                      'Name': 'Elbow Grease',
-                                      'Price': 99.95
-                                    },
-                                    {
-                                      'Name': 'Headlight Fluid',
-                                      'Price': 4
-                                    }
-                                  ]
-                                }
-                              ]
-                            }";
-
-            string res = Fnc.JsonPath(json, "$.Manufacturers[?(@.Name == 'Contoso')].Products");
-            Console.WriteLine(res);
-        }
-
         static void Main(string[] args)
         {
             string chanelName = "chanel";

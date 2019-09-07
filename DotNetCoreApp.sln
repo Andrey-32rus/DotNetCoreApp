@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisWrapper", "RedisWrappe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilsLib", "UtilsLib\UtilsLib.csproj", "{C6F02751-E6AB-47B7-B31F-1DB07FACC7D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject", "NUnitTestProject\NUnitTestProject.csproj", "{F13109CA-E91D-43CB-8875-EC064BD1F7C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C6F02751-E6AB-47B7-B31F-1DB07FACC7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6F02751-E6AB-47B7-B31F-1DB07FACC7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6F02751-E6AB-47B7-B31F-1DB07FACC7D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
