@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Threading;
 using DependencyInjection;
 using DependencyInjection.WriterDI;
 using RedisWrapper;
+using StackExchange.Redis;
 using UtilsLib;
 
 namespace CoreConsoleApp
@@ -57,12 +59,24 @@ namespace CoreConsoleApp
             writer.Write();
         }
 
+
         static void Main(string[] args)
         {
+            string chanelName = "chanel";
             var redis = new RedisWrap("localhost");
-            var db1 = redis.GetDataBase(0);
-            var stringValue = db1.StringGet("string");
-            Console.WriteLine(stringValue.ToString());
+            var db0 = redis.GetDataBase(0);
+            var subscriber = redis.GetSubscriber();
+            subscriber.Subscribe(chanelName, (chanel, value) =>
+            {
+                Console.WriteLine($"Chanel: {chanel}\tValue: {value}");
+            });
+            long res = subscriber.Publish(chanelName, "Hello World!!!");
+
+            while (true)
+            {
+                Thread.Sleep(500);
+            }
+
             Console.ReadLine();
         }
     }

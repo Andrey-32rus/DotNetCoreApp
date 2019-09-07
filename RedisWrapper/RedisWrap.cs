@@ -16,5 +16,10 @@ namespace RedisWrapper
         {
             return redis.GetDatabase(db);
         }
+
+        public ISubscriber GetSubscriber()
+        {
+            return redis.GetSubscriber();
+        }
     }
 }
