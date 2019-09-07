@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Threading;
-using DependencyInjection;
-using DependencyInjection.WriterDI;
 using RedisWrapper;
 using StackExchange.Redis;
 using UtilsLib;
@@ -52,13 +50,6 @@ namespace CoreConsoleApp
             string res = Fnc.JsonPath(json, "$.Manufacturers[?(@.Name == 'Contoso')].Products");
             Console.WriteLine(res);
         }
-
-        private static void DITest()
-        {
-            var writer = DI.GetService<IWriter>();
-            writer.Write();
-        }
-
 
         static void Main(string[] args)
         {
