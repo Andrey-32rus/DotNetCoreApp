@@ -3,7 +3,7 @@ using StackExchange.Redis;
 
 namespace RedisWrapper
 {
-    public class RedisWrap
+    public class RedisWrap : IDisposable
     {
         private ConnectionMultiplexer redis;
 
@@ -15,11 +15,6 @@ namespace RedisWrapper
         public IDatabase GetDataBase(int db = -1)
         {
             return redis.GetDatabase(db);
-        }
-
-        public ISubscriber GetSubscriber()
-        {
-            return redis.GetSubscriber();
         }
 
         public void Subscribe(string channelName, Action<RedisChannel, RedisValue> messageHandler)
@@ -35,6 +30,11 @@ namespace RedisWrapper
         public long Publish(string channelName, string message)
         {
             return redis.GetSubscriber().Publish(channelName, message);
+        }
+
+        public void Dispose()
+        {
+            redis?.Dispose();
         }
     }
 }
