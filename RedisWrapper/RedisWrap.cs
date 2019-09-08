@@ -22,9 +22,9 @@ namespace RedisWrapper
             redis.GetSubscriber().Subscribe(channelName, messageHandler);
         }
 
-        public void Unsubscribe(string channelName)
+        public void Unsubscribe(string channelName, Action<RedisChannel, RedisValue> messageHandler = null)
         {
-            redis.GetSubscriber().Unsubscribe(channelName);
+            redis.GetSubscriber().Unsubscribe(channelName, messageHandler);
         }
 
         public long Publish(string channelName, string message)
