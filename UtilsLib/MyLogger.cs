@@ -7,9 +7,13 @@ namespace UtilsLib
     {
         private static readonly Logger Logger = LogManager.GetLogger("MyLogger");
 
-        public static void Log(string text, LogLevel logLevel)
+        public static void Log(string text, LogLevel logLevel, string path = null)
         {
-            Logger.Log(LogLevel.Error).Message(text).Write();
+            Logger
+                .Log(LogLevel.Error)
+                .Message(text)
+                .Property("Path",path)
+                .Write();
         }
     }
 }

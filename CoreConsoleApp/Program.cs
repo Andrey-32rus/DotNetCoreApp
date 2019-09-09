@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Threading;
+using NLog;
 using RedisWrapper;
 using StackExchange.Redis;
 using UtilsLib;
@@ -11,6 +12,8 @@ namespace CoreConsoleApp
     {
         static void Main(string[] args)
         {
+            MyLogger.Log("Start", LogLevel.Info);
+
             string chanelName = "chanel";
             var redis = new RedisWrap("localhost");
             var db0 = redis.GetDataBase(0);
