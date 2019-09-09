@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisWrapper", "RedisWrappe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilsLib", "UtilsLib\UtilsLib.csproj", "{C6F02751-E6AB-47B7-B31F-1DB07FACC7D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject", "NUnitTestProject\NUnitTestProject.csproj", "{F13109CA-E91D-43CB-8875-EC064BD1F7C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestProject", "NUnitTestProject\NUnitTestProject.csproj", "{F13109CA-E91D-43CB-8875-EC064BD1F7C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoWrapper", "MongoWrapper\MongoWrapper.csproj", "{C6685AC1-727C-4347-8804-86EBE251053F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyParser", "CurrencyParser\CurrencyParser.csproj", "{11FEA728-BD94-4464-A4FD-2DAC642E7CAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F13109CA-E91D-43CB-8875-EC064BD1F7C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6685AC1-727C-4347-8804-86EBE251053F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6685AC1-727C-4347-8804-86EBE251053F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6685AC1-727C-4347-8804-86EBE251053F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6685AC1-727C-4347-8804-86EBE251053F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FEA728-BD94-4464-A4FD-2DAC642E7CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FEA728-BD94-4464-A4FD-2DAC642E7CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FEA728-BD94-4464-A4FD-2DAC642E7CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FEA728-BD94-4464-A4FD-2DAC642E7CAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

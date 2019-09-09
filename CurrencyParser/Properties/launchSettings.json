@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CoreConsoleApp": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "EnvVar": "Development"
+      }
+    }
+  }
+}
