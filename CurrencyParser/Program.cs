@@ -18,6 +18,10 @@ namespace CurrencyParser
             string jsonCurs = Fnc.JsonPath(json, "$.Valute.*");
             Console.WriteLine(jsonCurs);
             var listCurs = JsonConvert.DeserializeObject<List<CurrencyModel>>(jsonCurs);
+            foreach (var cur in listCurs)
+            {
+                cur.BaseRate = 1m / cur.Value / cur.Nominal;
+            }
             MongoDao.ReplaceAllCurrencies(listCurs);
         }
     }

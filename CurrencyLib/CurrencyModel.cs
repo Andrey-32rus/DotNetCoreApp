@@ -11,13 +11,17 @@ namespace CurrencyLib
     public class CurrencyModel
     {
         [BsonId]
-        [JsonProperty(PropertyName = "ID")]
-        public string Id;
-        public int NumCode;
+        [JsonProperty(PropertyName = "NumCode")]
+        public int Id;
         public string CharCode;
+        [BsonRepresentation(BsonType.Decimal128)]
         public decimal Nominal;
         public string Name;
+        [BsonRepresentation(BsonType.Decimal128)]
         public decimal Value;
+        [BsonRepresentation(BsonType.Decimal128)]
         public decimal Previous;
+        [BsonRepresentation(BsonType.Decimal128)]
+        public decimal BaseRate;
     }
 }
