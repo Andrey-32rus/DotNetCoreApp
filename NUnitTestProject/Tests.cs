@@ -1,4 +1,5 @@
 using System;
+using CurrencyLib;
 using NUnit.Framework;
 using UtilsLib;
 
@@ -50,6 +51,14 @@ namespace NUnitTestProject
             Console.WriteLine(res);
 
             Assert.Pass();
+        }
+
+        [Test]
+        public void GetRequest()
+        {
+            string json = NetUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
+            Console.WriteLine(json);
+            Assert.IsNotNull(json);
         }
     }
 }

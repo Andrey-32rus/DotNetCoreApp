@@ -7,5 +7,6 @@ namespace CurrencyLib
     {
         private static readonly MongoWrap Mongo = MongoWrap.FromConfig("MongoConnection");
 
+
     }
 }
