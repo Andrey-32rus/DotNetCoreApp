@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace UtilsLib
@@ -24,7 +25,7 @@ namespace UtilsLib
         public static string JsonPath(string json, string jsonPath)
         {
             var js = JObject.Parse(json);
-            return js.SelectToken(jsonPath).ToString();
+            return js.SelectTokens(jsonPath).ToJson();
         }
     }
 }
