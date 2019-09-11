@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CurrencyService.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
     public class CurrenciesController : ControllerBase
     {
@@ -14,6 +15,12 @@ namespace CurrencyService.Controllers
         public List<CurrencyModel> Get()
         {
             return MongoDao.GetAllCurrencies();
+        }
+
+        [HttpGet("{id}")]
+        public CurrencyModel Get(int id)
+        {
+            return MongoDao.GetCurrencyById(id);
         }
     }
 }

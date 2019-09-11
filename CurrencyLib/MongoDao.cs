@@ -7,7 +7,12 @@ namespace CurrencyLib
 {
     public static class MongoDao
     {
-        private static readonly MongoWrap Mongo = MongoWrap.FromConfig("MongoConnection");
+        private static readonly MongoWrap Mongo;
+
+        static MongoDao()
+        {
+            Mongo = MongoWrap.FromConfig("MongoConnection");
+        }
 
         public static void ReplaceAllCurrencies(List<CurrencyModel> currencies)
         {
@@ -28,6 +33,13 @@ namespace CurrencyLib
         {
             var coll = Mongo.GetCollection<CurrencyModel>("CurrencyParser", "Currencies");
             return coll.FindSync(FilterDefinition<CurrencyModel>.Empty).ToList();
+        }
+
+        public static CurrencyModel GetCurrencyById(int id)
+        {
+            var coll = Mongo.GetCollection<CurrencyModel>("CurrencyParser", "Currencies");
+            var filter = Builders<CurrencyModel>.Filter.Eq(x => x.Id, id);
+            return coll.FindSync(filter).FirstOrDefault();
         }
     }
 }
