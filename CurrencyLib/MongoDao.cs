@@ -23,5 +23,11 @@ namespace CurrencyLib
 
             var res = coll.BulkWrite(replaceModel);
         }
+
+        public static List<CurrencyModel> GetAllCurrencies()
+        {
+            var coll = Mongo.GetCollection<CurrencyModel>("CurrencyParser", "Currencies");
+            return coll.FindSync(FilterDefinition<CurrencyModel>.Empty).ToList();
+        }
     }
 }
