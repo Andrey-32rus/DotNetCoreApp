@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -47,6 +48,14 @@ namespace CurrencyService
             app.UseSignalR(route =>
             {
                 route.MapHub<CurrenciesHub>("/push/currencies");
+            });
+
+            app.Use((context, next) =>
+            {
+                var hubContext = context.RequestServices
+                    .GetRequiredService<IHubContext<CurrenciesHub>>();
+
+                return hubContext.Clients.All.SendAsync("CurrenciesUpdate", "SignalR Hello World !!!");
             });
         }
     }

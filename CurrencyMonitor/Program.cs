@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Microsoft.AspNetCore.SignalR.Client;
+using Newtonsoft.Json;
 
 namespace CurrencyMonitor
 {
@@ -11,7 +12,12 @@ namespace CurrencyMonitor
             var connection = new HubConnectionBuilder()
                 .WithUrl("https://localhost:5001/push/currencies")
                 .Build();
-            
+
+            connection.On<string>("CurrenciesUpdate", param =>
+            {
+                Console.WriteLine(param);
+            });
+
             while (true)
             {
                 try
