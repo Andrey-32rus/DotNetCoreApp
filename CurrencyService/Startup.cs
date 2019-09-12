@@ -46,7 +46,7 @@ namespace CurrencyService
             app.UseMvc();
             app.UseSignalR(route =>
             {
-                route.MapHub<CurrenciesHub>("push/currencies");
+                route.MapHub<CurrenciesHub>("/push/currencies");
             });
         }
     }

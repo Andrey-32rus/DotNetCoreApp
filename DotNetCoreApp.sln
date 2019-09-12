@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyParser", "CurrencyP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyLib", "CurrencyLib\CurrencyLib.csproj", "{F3FD401D-6A27-4771-9B31-2EF3B9412629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyService", "CurrencyService\CurrencyService.csproj", "{718D392D-203E-458A-8DD4-A709478943A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyService", "CurrencyService\CurrencyService.csproj", "{718D392D-203E-458A-8DD4-A709478943A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyMonitor", "CurrencyMonitor\CurrencyMonitor.csproj", "{4F38C1FA-F174-44D0-9612-45B916C4B33E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{718D392D-203E-458A-8DD4-A709478943A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{718D392D-203E-458A-8DD4-A709478943A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{718D392D-203E-458A-8DD4-A709478943A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F38C1FA-F174-44D0-9612-45B916C4B33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F38C1FA-F174-44D0-9612-45B916C4B33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F38C1FA-F174-44D0-9612-45B916C4B33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F38C1FA-F174-44D0-9612-45B916C4B33E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
