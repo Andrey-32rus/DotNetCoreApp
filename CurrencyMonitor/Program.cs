@@ -9,10 +9,25 @@ namespace CurrencyMonitor
         static void Main(string[] args)
         {
             var connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:5001/ChatHub")
+                .WithUrl("https://localhost:5001/push/currencies")
                 .Build();
+            
+            while (true)
+            {
+                try
+                {
+                    connection.StartAsync().Wait();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    continue;
+                }
 
-            connection.StartAsync().Wait();
+                Console.WriteLine("registered");
+                break;
+            }
+            
 
             while (true)
             {
