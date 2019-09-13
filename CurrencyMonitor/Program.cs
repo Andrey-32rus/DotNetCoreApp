@@ -10,7 +10,10 @@ namespace CurrencyMonitor
         static void Main(string[] args)
         {
             var connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:5001/push/currencies")
+                .WithUrl("https://localhost:5001/push/currencies", x =>
+                {
+                    x.Headers.Add("Authorization", "token");
+                })
                 .Build();
 
             connection.On<string>("CurrenciesUpdate", param =>

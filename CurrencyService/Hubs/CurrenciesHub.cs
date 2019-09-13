@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Primitives;
 
 namespace CurrencyService.Hubs
 {
@@ -10,6 +11,14 @@ namespace CurrencyService.Hubs
     {
         public override Task OnConnectedAsync()
         {
+            bool isTokenPresent = Context.GetHttpContext().Request.Headers
+                .TryGetValue("Authorization", out StringValues token);
+
+            if (isTokenPresent == false || token.Count != 1 || token[0] != "token")
+            {
+                Context.Abort();
+            }
+            
             return base.OnConnectedAsync();
         }
 
