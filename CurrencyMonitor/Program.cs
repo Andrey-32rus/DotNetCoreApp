@@ -30,6 +30,7 @@ namespace CurrencyMonitor
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+                    Thread.Sleep(500);
                     continue;
                 }
 

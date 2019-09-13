@@ -39,7 +39,7 @@ namespace CurrencyParser
                 }
               
 
-                Thread.Sleep(60 * 1000);
+                Thread.Sleep(30 * 1000);
             }
 
         }
