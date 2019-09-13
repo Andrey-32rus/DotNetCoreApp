@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CurrencyLib;
 using CurrencyService.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,13 +51,22 @@ namespace CurrencyService
                 route.MapHub<CurrenciesHub>("/push/currencies");
             });
 
-            app.Use((context, next) =>
-            {
-                var hubContext = context.RequestServices
-                    .GetRequiredService<IHubContext<CurrenciesHub>>();
+            var hubContext = app.ApplicationServices.GetService<IHubContext<CurrenciesHub>>();
 
-                return hubContext.Clients.All.SendAsync("CurrenciesUpdate", "SignalR Hello World !!!");
+            RedisDao.SubscribeService((channel, value) =>
+            {
+                hubContext.Clients.All.SendAsync("CurrenciesUpdate", value.ToString());
             });
+
+            //app.Use((context, next) =>
+            //{
+            //    var hubContext = context.RequestServices
+            //        .GetRequiredService<IHubContext<CurrenciesHub>>();
+
+               
+
+            //    return Task.CompletedTask;
+            //});
         }
     }
 }
