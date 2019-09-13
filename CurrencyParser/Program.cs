@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using CurrencyLib;
 using MongoDB.Bson;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NLog;
 using UtilsLib;
 
 namespace CurrencyParser
@@ -12,17 +14,34 @@ namespace CurrencyParser
     {
         static void Main(string[] args)
         {
-            string json = NetUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
-            //var js = JObject.Parse(json);
-            //var res = js.SelectTokens("$.Valute.*").ToJson();
-            string jsonCurs = Fnc.JsonPath(json, "$.Valute.*");
-            Console.WriteLine(jsonCurs);
-            var listCurs = JsonConvert.DeserializeObject<List<CurrencyModel>>(jsonCurs);
-            foreach (var cur in listCurs)
+            while (true)
             {
-                cur.BaseRate = 1m / cur.Value / cur.Nominal;
+                try
+                {
+                    string json = NetUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
+                    Console.WriteLine($"Currecies Downloaded DT:{DateTime.Now}");
+
+                    string jsonCurs = Fnc.JsonPath(json, "$.Valute.*");
+                    var listCurs = JsonConvert.DeserializeObject<List<CurrencyModel>>(jsonCurs);
+                    foreach (var cur in listCurs)
+                    {
+                        cur.BaseRate = 1m / cur.Value / cur.Nominal;
+                    }
+
+                    MongoDao.ReplaceAllCurrencies(listCurs);
+                    RedisDao.UpdateCurrencies(listCurs);
+                    
+                    Console.WriteLine($"Currecies Updated DT:{DateTime.Now}");
+                }
+                catch (Exception e)
+                {
+                    MyLogger.Log(e.ToString(), LogLevel.Error);
+                }
+              
+
+                Thread.Sleep(60 * 1000);
             }
-            MongoDao.ReplaceAllCurrencies(listCurs);
+
         }
     }
 }
