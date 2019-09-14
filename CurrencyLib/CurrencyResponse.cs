@@ -14,6 +14,11 @@ namespace CurrencyLib
         [JsonProperty(PropertyName = "BR")]
         public decimal BaseRate;
 
+        //Для дессериализации
+        public CurrencyResponse()
+        {
+        }
+
         public CurrencyResponse(CurrencyMongo m)
         {
             Id = m.Id;

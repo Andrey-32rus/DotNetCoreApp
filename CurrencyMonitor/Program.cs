@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using CurrencyLib;
 using Microsoft.AspNetCore.SignalR.Client;
 using Newtonsoft.Json;
+using UtilsLib;
 
 namespace CurrencyMonitor
 {
@@ -18,7 +21,8 @@ namespace CurrencyMonitor
 
             connection.On<string>("CurrenciesUpdate", param =>
             {
-                Console.WriteLine(param);
+                var list = JsonConvert.DeserializeObject<List<CurrencyResponse>>(param);
+                Utils.WriteCurrenciesToConsole(list);
             });
 
             while (true)
