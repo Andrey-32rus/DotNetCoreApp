@@ -14,14 +14,14 @@ namespace CurrencyLib
             Mongo = MongoWrap.FromConfig("MongoConnection");
         }
 
-        public static void ReplaceAllCurrencies(List<CurrencyModel> currencies)
+        public static void ReplaceAllCurrencies(List<CurrencyMongo> currencies)
         {
-            var coll = Mongo.GetCollection<CurrencyModel>("CurrencyParser", "Currencies");
+            var coll = Mongo.GetCollection<CurrencyMongo>("CurrencyParser", "Currencies");
 
-            List<ReplaceOneModel<CurrencyModel>> replaceModel = new List<ReplaceOneModel<CurrencyModel>>(currencies.Count);
+            List<ReplaceOneModel<CurrencyMongo>> replaceModel = new List<ReplaceOneModel<CurrencyMongo>>(currencies.Count);
             foreach (var cur in currencies)
             {
-                var model = new ReplaceOneModel<CurrencyModel>(Builders<CurrencyModel>.Filter.Eq(x => x.Id, cur.Id), cur);
+                var model = new ReplaceOneModel<CurrencyMongo>(Builders<CurrencyMongo>.Filter.Eq(x => x.Id, cur.Id), cur);
                 model.IsUpsert = true;
                 replaceModel.Add(model);
             }
@@ -29,16 +29,16 @@ namespace CurrencyLib
             var res = coll.BulkWrite(replaceModel);
         }
 
-        public static List<CurrencyModel> GetAllCurrencies()
+        public static List<CurrencyMongo> GetAllCurrencies()
         {
-            var coll = Mongo.GetCollection<CurrencyModel>("CurrencyParser", "Currencies");
-            return coll.FindSync(FilterDefinition<CurrencyModel>.Empty).ToList();
+            var coll = Mongo.GetCollection<CurrencyMongo>("CurrencyParser", "Currencies");
+            return coll.FindSync(FilterDefinition<CurrencyMongo>.Empty).ToList();
         }
 
-        public static CurrencyModel GetCurrencyById(int id)
+        public static CurrencyMongo GetCurrencyById(int id)
         {
-            var coll = Mongo.GetCollection<CurrencyModel>("CurrencyParser", "Currencies");
-            var filter = Builders<CurrencyModel>.Filter.Eq(x => x.Id, id);
+            var coll = Mongo.GetCollection<CurrencyMongo>("CurrencyParser", "Currencies");
+            var filter = Builders<CurrencyMongo>.Filter.Eq(x => x.Id, id);
             return coll.FindSync(filter).FirstOrDefault();
         }
     }

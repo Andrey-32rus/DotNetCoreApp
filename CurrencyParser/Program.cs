@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using CurrencyLib;
 using MongoDB.Bson;
@@ -22,14 +23,15 @@ namespace CurrencyParser
                     Console.WriteLine($"Currecies Downloaded DT:{DateTime.Now}");
 
                     string jsonCurs = Fnc.JsonPath(json, "$.Valute.*");
-                    var listCurs = JsonConvert.DeserializeObject<List<CurrencyModel>>(jsonCurs);
+                    var listCurs = JsonConvert.DeserializeObject<List<CurrencyMongo>>(jsonCurs);
                     foreach (var cur in listCurs)
                     {
                         cur.BaseRate = 1m / cur.Value / cur.Nominal;
                     }
 
                     MongoDao.ReplaceAllCurrencies(listCurs);
-                    RedisDao.UpdateCurrencies(listCurs);
+                    var listResp = listCurs.Select(x => new CurrencyResponse(x)).ToList();
+                    RedisDao.UpdateCurrencies(listResp);
                     
                     Console.WriteLine($"Currecies Updated DT:{DateTime.Now}");
                 }

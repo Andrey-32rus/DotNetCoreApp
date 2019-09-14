@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace CurrencyLib
 {
     [BsonIgnoreExtraElements]
-    public class CurrencyModel
+    public class CurrencyMongo
     {
         [BsonId]
         [JsonProperty(PropertyName = "NumCode")]

@@ -12,7 +12,7 @@ namespace CurrencyLib
         private static readonly string channelName = "CurrencyChannel";
         private static RedisWrap redis = new RedisWrap(AppConfig.GetConnectionString("RedisConnection"));
 
-        public static void UpdateCurrencies(List<CurrencyModel> currencies)
+        public static void UpdateCurrencies(List<CurrencyResponse> currencies)
         {
             redis.Publish(channelName, currencies.ToJson());
         }
