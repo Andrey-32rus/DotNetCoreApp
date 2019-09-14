@@ -57,16 +57,6 @@ namespace CurrencyService
             {
                 hubContext.Clients.All.SendAsync("CurrenciesUpdate", value.ToString());
             });
-
-            //app.Use((context, next) =>
-            //{
-            //    var hubContext = context.RequestServices
-            //        .GetRequiredService<IHubContext<CurrenciesHub>>();
-
-               
-
-            //    return Task.CompletedTask;
-            //});
         }
     }
 }
