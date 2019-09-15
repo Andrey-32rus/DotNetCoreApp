@@ -41,7 +41,10 @@ namespace CurrencyMonitor
                 Console.WriteLine("registered");
                 break;
             }
-            
+
+            var jsonCurs = NetUtils.Get("https://localhost:5001/api/currencies");
+            var curs = JsonConvert.DeserializeObject<List<CurrencyResponse>>(jsonCurs);
+            Utils.WriteCurrenciesToConsole(curs);
 
             while (true)
             {
