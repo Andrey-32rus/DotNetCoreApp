@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using CurrencyLib;
 using Microsoft.AspNetCore.SignalR.Client;
 using Newtonsoft.Json;
@@ -12,43 +13,60 @@ namespace CurrencyMonitor
     {
         static void Main(string[] args)
         {
-            var connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:5001/push/currencies", x =>
-                {
-                    x.Headers.Add("Authorization", "token");
-                })
-                .Build();
-
-            connection.On<string>("CurrenciesUpdate", param =>
+            Task.Run(() =>
             {
-                var list = JsonConvert.DeserializeObject<List<CurrencyResponse>>(param);
-                Utils.WriteCurrenciesToConsole(list);
+                while (true)
+                {
+                    try
+                    {
+                        var jsonCurs = NetUtils.Get("https://localhost:5001/api/currencies");
+                        var curs = JsonConvert.DeserializeObject<List<CurrencyResponse>>(jsonCurs);
+                        Utils.WriteCurrenciesToConsole(curs);
+                    }
+                    catch (Exception e)
+                    {
+                        Thread.Sleep(500);
+                        continue;
+                    }
+
+                    break;
+                }
             });
 
+            Task.Run(() =>
+            {
+                var connection = new HubConnectionBuilder()
+                    .WithUrl("https://localhost:5001/push/currencies",
+                        x => { x.Headers.Add("Authorization", "token"); })
+                    .Build();
+
+                connection.On<string>("CurrenciesUpdate", param =>
+                {
+                    var list = JsonConvert.DeserializeObject<List<CurrencyResponse>>(param);
+                    Utils.WriteCurrenciesToConsole(list);
+                });
+
+                while (true)
+                {
+                    try
+                    {
+                        connection.StartAsync().Wait();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        Thread.Sleep(500);
+                        continue;
+                    }
+
+                    break;
+                }
+            });
+
+
             while (true)
             {
-                try
-                {
-                    connection.StartAsync().Wait();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    Thread.Sleep(500);
-                    continue;
-                }
-
-                Console.WriteLine("registered");
-                break;
-            }
-
-            var jsonCurs = NetUtils.Get("https://localhost:5001/api/currencies");
-            var curs = JsonConvert.DeserializeObject<List<CurrencyResponse>>(jsonCurs);
-            Utils.WriteCurrenciesToConsole(curs);
-
-            while (true)
-            {
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
         }
     }
