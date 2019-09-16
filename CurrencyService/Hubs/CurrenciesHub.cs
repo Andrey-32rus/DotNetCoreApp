@@ -11,8 +11,8 @@ namespace CurrencyService.Hubs
     {
         public override Task OnConnectedAsync()
         {
-            bool isTokenPresent = Context.GetHttpContext().Request.Headers
-                .TryGetValue("Authorization", out StringValues token);
+            var headers = Context.GetHttpContext().Request.Headers;
+            bool isTokenPresent = headers.TryGetValue("Authorization", out StringValues token);
 
             if (isTokenPresent == false || token.Count != 1 || token[0] != "token")
             {
