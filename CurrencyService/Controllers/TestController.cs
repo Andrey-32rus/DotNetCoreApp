@@ -12,10 +12,10 @@ namespace CurrencyService.Controllers
     public class TestController : ControllerBase
     {
         [HttpGet("method")]
-        public ActionResult<string> Method(bool str)
+        public ActionResult<string> Method(string str)
         {
-            if (str == true)
-                return "asd";
+            if (string.IsNullOrWhiteSpace(str) == false)
+                return str;
             return Unauthorized();
         }
     }
