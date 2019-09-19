@@ -36,8 +36,10 @@ namespace CurrencyMonitor
             Task.Run(() =>
             {
                 var connection = new HubConnectionBuilder()
-                    .WithUrl("https://localhost:5001/push/currencies",
-                        x => { x.Headers.Add("Authorization", "token"); })
+                    .WithUrl("https://localhost:5001/push/currencies", x =>
+                    {
+                        x.AccessTokenProvider = () => Task.FromResult("token");
+                    })
                     .Build();
 
                 connection.On<string>("CurrenciesUpdate", param =>

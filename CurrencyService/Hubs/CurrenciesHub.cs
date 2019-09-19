@@ -11,14 +11,20 @@ namespace CurrencyService.Hubs
     {
         public override Task OnConnectedAsync()
         {
-            var headers = Context.GetHttpContext().Request.Headers;
+            var context = Context.GetHttpContext();
+            var headers = context.Request.Headers;
             bool isTokenPresent = headers.TryGetValue("Authorization", out StringValues token);
-
-            if (isTokenPresent == false || token.Count != 1 || token[0] != "token")
-            {
-                Context.Abort();
-            }
             
+            if (isTokenPresent == true && token.Count == 1)
+            {
+                var split = token[0].Split(' ');
+                if (split != null && split.Length == 2 && split[0] == "Bearer" && split[1] == "token")
+                {
+                    return base.OnConnectedAsync();
+                }
+            }
+
+            Context.Abort();
             return base.OnConnectedAsync();
         }
 
