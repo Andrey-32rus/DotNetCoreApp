@@ -18,5 +18,11 @@ namespace CurrencyService.Controllers
                 return str;
             return Unauthorized();
         }
+
+        [HttpGet("exception")]
+        public ActionResult Exception()
+        {
+            throw new Exception("Exception!!!");
+        }
     }
 }
