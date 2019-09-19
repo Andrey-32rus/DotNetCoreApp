@@ -33,15 +33,15 @@ namespace CurrencyMonitor
                 }
             });
 
+            var connection = new HubConnectionBuilder()
+                .WithUrl("https://localhost:5001/push/currencies", x =>
+                {
+                    x.AccessTokenProvider = () => Task.FromResult("token");
+                })
+                .Build();
+
             Task.Run(() =>
             {
-                var connection = new HubConnectionBuilder()
-                    .WithUrl("https://localhost:5001/push/currencies", x =>
-                    {
-                        x.AccessTokenProvider = () => Task.FromResult("token");
-                    })
-                    .Build();
-
                 connection.On<string>("CurrenciesUpdate", param =>
                 {
                     var list = JsonConvert.DeserializeObject<List<CurrencyResponse>>(param);
@@ -68,7 +68,8 @@ namespace CurrencyMonitor
 
             while (true)
             {
-                Thread.Sleep(1000);
+                string str = Console.ReadLine();
+                connection.SendAsync("Method", str);
             }
         }
     }

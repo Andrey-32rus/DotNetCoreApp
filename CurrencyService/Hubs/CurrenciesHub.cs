@@ -28,6 +28,13 @@ namespace CurrencyService.Hubs
             return base.OnConnectedAsync();
         }
 
+        public void Method(string str)
+        {
+            var context = Context.GetHttpContext();
+            var request = context.Request;
+            var headers = request.Headers;
+        }
+
         public override Task OnDisconnectedAsync(Exception exception)
         {
             return base.OnDisconnectedAsync(exception);
