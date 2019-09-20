@@ -34,12 +34,13 @@ namespace CurrencyService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseDisableHttp();
-
             if (AppConfig.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDisableHttp();
+            app.UseMyAuthorization();
 
             app.UseMvc();
             app.UseSignalR(route =>
