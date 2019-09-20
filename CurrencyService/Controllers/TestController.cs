@@ -24,5 +24,11 @@ namespace CurrencyService.Controllers
         {
             throw new Exception("Exception!!!");
         }
+
+        [HttpGet("Auth")]
+        public ActionResult Auth()
+        {
+            return Ok();
+        }
     }
 }
