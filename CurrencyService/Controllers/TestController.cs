@@ -32,5 +32,11 @@ namespace CurrencyService.Controllers
         {
             return Ok();
         }
+
+        [HttpGet("StatusCode")]
+        public ActionResult StatusCode()
+        {
+            return StatusCode(402);
+        }
     }
 }
