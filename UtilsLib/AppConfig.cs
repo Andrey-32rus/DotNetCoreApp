@@ -6,7 +6,7 @@ namespace UtilsLib
 {
     public static class AppConfig
     {
-        public static string EnvVar { get; } = Environment.GetEnvironmentVariable("EnvVar");
+        private static readonly string EnvVar = Environment.GetEnvironmentVariable("EnvVar");
         private static readonly IConfigurationRoot Config = new ConfigurationBuilder()
             .AddJsonFile($"appsettings.json", true)
             .AddJsonFile($"appsettings.{EnvVar}.json", true)
@@ -37,5 +37,28 @@ namespace UtilsLib
                 return null;
             }
         }
+
+        #region Environment Getters
+
+        public static bool IsDevelopment()
+        {
+            return EnvVar == EnvironmentType.Development;
+        }
+
+        public static bool IsStaging()
+        {
+            return EnvVar == EnvironmentType.Staging;
+        }
+
+        public static bool IsProduction()
+        {
+            return EnvVar == EnvironmentType.Production;
+        }
+
+        public static bool IsEnvironment(string environmentName)
+        {
+            return EnvVar == environmentName;
+        }
+        #endregion
     }
 }

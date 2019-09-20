@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceUtils.Middleware;
+using UtilsLib;
 
 namespace CurrencyService
 {
@@ -35,7 +36,7 @@ namespace CurrencyService
         {
             app.UseDisableHttp();
 
-            if (env.IsDevelopment())
+            if (AppConfig.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
