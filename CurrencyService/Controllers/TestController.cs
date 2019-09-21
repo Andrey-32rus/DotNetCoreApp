@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CurrencyService.Filters;
 using Microsoft.AspNetCore.Mvc;
+using ServiceUtils.Filters;
 
 namespace CurrencyService.Controllers
 {
