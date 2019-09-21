@@ -40,7 +40,6 @@ namespace CurrencyService
             }
 
             app.UseDisableHttp();
-            app.UseMyAuthorization();
 
             app.UseMvc();
             app.UseSignalR(route =>

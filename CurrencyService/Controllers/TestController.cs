@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using CurrencyService.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CurrencyService.Controllers
@@ -26,7 +25,7 @@ namespace CurrencyService.Controllers
             throw new Exception("Exception!!!");
         }
 
-        [Authorize()]
+        [MyAuthorization]
         [HttpGet("Auth")]
         public ActionResult Auth()
         {
