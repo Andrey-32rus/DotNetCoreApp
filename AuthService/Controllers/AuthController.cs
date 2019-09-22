@@ -42,11 +42,11 @@ namespace AuthService.Controllers
                     };
                 }
 
-                return StatusCode(400);
+                return StatusCode(400, null);
             }
             catch (Exception e)
             {
-                return StatusCode(500);
+                return StatusCode(500, null);
             }
         }
     }
