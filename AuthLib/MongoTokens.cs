@@ -24,5 +24,10 @@ namespace AuthLib
 
             Coll.ReplaceOne(filter, token, new UpdateOptions {IsUpsert = true});
         }
+
+        public static TokenMongo FindByRefreshToken(string refreshToken)
+        {
+            return Coll.FindSync(x => x.RefreshToken == refreshToken).FirstOrDefault();
+        }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace AuthLib
 {
     [JsonObject]
-    public class AuthRequest
+    public class LoginRequest
     {
         [JsonProperty(PropertyName = "LN")]
         public string Login;
