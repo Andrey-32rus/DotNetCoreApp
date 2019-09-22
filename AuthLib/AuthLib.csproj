@@ -8,4 +8,8 @@
     <PackageReference Include="JWT" Version="5.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MongoWrapper\MongoWrapper.csproj" />
+  </ItemGroup>
+
 </Project>
