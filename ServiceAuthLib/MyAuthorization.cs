@@ -20,7 +20,7 @@ namespace ServiceAuthLib
     public class MyAuthorization : Attribute, IAuthorizationFilter
     {
         private static readonly IMongoCollection<Token> MongoColl =
-            MongoWrap.FromConfig("MongoConnection").GetCollection<Token>("Auth", "Token");
+            MongoWrap.FromConfig("MongoConnection").GetCollection<Token>("Auth", "Tokens");
 
         private static Token FindToken(string accessToken)
         {

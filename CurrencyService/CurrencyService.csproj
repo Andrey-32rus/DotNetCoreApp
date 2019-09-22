@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyLib\CurrencyLib.csproj" />
+    <ProjectReference Include="..\ServiceAuthLib\ServiceAuthLib.csproj" />
     <ProjectReference Include="..\ServiceUtils\ServiceUtils.csproj" />
   </ItemGroup>
 
