@@ -13,7 +13,7 @@ namespace AuthLib
         private static readonly IJwtAlgorithm Algorithm = new HMACSHA512Algorithm();
         private static readonly RNGCryptoServiceProvider Rng = new RNGCryptoServiceProvider();
 
-        public static string GenerateToken()
+        public static string GenerateJwt()
         {
             byte[] key = new byte[512];
             Rng.GetNonZeroBytes(key);
@@ -33,15 +33,14 @@ namespace AuthLib
             return Convert.ToBase64String(bytes);
         }
 
-        public static string GuidToken()
+        public static string GenerateGuidToken(int countOfGuids = 1)
         {
-            List<byte> bytes = new List<byte>();
-
-            var guid = Guid.NewGuid().ToByteArray();
-            bytes.AddRange(guid);
-
-            //long dt = DateTime.UtcNow.ToBinary();
-            //bytes.AddRange(BitConverter.GetBytes(dt));
+            List<byte> bytes = new List<byte>(16 * countOfGuids);
+            for (int i = 0; i < countOfGuids; i++)
+            {
+                var guid = Guid.NewGuid().ToByteArray();
+                bytes.AddRange(guid);
+            }
 
             return Convert.ToBase64String(bytes.ToArray());
         }

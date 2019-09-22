@@ -31,9 +31,9 @@ namespace AuthService.Controllers
                             UserId = user.Id,
                             AppGuid = request.AppGuid,
                         },
-                        AccessToken = CryptoUtils.GenerateToken(),
+                        AccessToken = CryptoUtils.GenerateGuidToken(10),
                         AccessTokenExpires = now.AddSeconds(60),
-                        RefreshToken = CryptoUtils.GenerateToken(),
+                        RefreshToken = CryptoUtils.GenerateGuidToken(5),
                         RefreshTokenExpires = now.AddDays(30),
                     };
                     MongoTokens.ReplaceTokenByUserAndAppGuid(tokenModel);
