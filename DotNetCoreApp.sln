@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyService", "Currency
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyMonitor", "CurrencyMonitor\CurrencyMonitor.csproj", "{4F38C1FA-F174-44D0-9612-45B916C4B33E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceUtils", "ServiceUtils\ServiceUtils.csproj", "{908EF8CB-27DE-4389-AEA3-3E14D0083B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceUtils", "ServiceUtils\ServiceUtils.csproj", "{908EF8CB-27DE-4389-AEA3-3E14D0083B49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Currencies", "Currencies", "{2DE78AE9-F942-42BE-BBEB-CB7E464C8AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11FEA728-BD94-4464-A4FD-2DAC642E7CAC} = {2DE78AE9-F942-42BE-BBEB-CB7E464C8AB1}
+		{F3FD401D-6A27-4771-9B31-2EF3B9412629} = {2DE78AE9-F942-42BE-BBEB-CB7E464C8AB1}
+		{718D392D-203E-458A-8DD4-A709478943A6} = {2DE78AE9-F942-42BE-BBEB-CB7E464C8AB1}
+		{4F38C1FA-F174-44D0-9612-45B916C4B33E} = {2DE78AE9-F942-42BE-BBEB-CB7E464C8AB1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4213393A-FFC3-46FF-B272-B013B168A0A5}
