@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AuthLib;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,12 @@ namespace AuthService.Controllers
                             UserId = user.Id,
                             AppGuid = request.AppGuid,
                         },
-                        AccessToken = TokenUtils.GenerateToken(),
+                        AccessToken = CryptoUtils.GenerateToken(),
                         AccessTokenExpires = now.AddSeconds(60),
-                        RefreshToken = TokenUtils.GenerateToken(),
+                        RefreshToken = CryptoUtils.GenerateToken(),
                         RefreshTokenExpires = now.AddDays(30),
                     };
                     MongoTokens.ReplaceTokenByUserAndAppGuid(tokenModel);
-
                     return new AuthResponse
                     {
                         AccessToken = tokenModel.AccessToken,

@@ -12,7 +12,7 @@ namespace NUnitTestProject
         [Test]
         public void GenerateToken()
         {
-            string token = TokenUtils.GenerateToken();
+            string token = CryptoUtils.GenerateToken();
             Assert.NotNull(token);
             Console.WriteLine(token);
         }
