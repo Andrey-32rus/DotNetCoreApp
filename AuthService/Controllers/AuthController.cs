@@ -24,9 +24,11 @@ namespace AuthService.Controllers
                     DateTime now = DateTime.UtcNow;
                     TokenMongo tokenModel = new TokenMongo
                     {
-                        UserId = user.Id,
-                        AppGuid = request.AppGuid,
-
+                        Id = new TokenMongoPrimaryKey
+                        {
+                            UserId = user.Id,
+                            AppGuid = request.AppGuid,
+                        },
                         AccessToken = TokenUtils.GenerateToken(),
                         AccessTokenExpires = now.AddSeconds(60),
                         RefreshToken = TokenUtils.GenerateToken(),

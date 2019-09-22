@@ -18,8 +18,8 @@ namespace AuthLib
         {
             var filter = Builders<TokenMongo>.Filter.And(new[]
             {
-                Builders<TokenMongo>.Filter.Eq(x => x.UserId, token.UserId),
-                Builders<TokenMongo>.Filter.Eq(x => x.AppGuid, token.AppGuid),
+                Builders<TokenMongo>.Filter.Eq(x => x.Id, token.Id),
+                //Builders<TokenMongo>.Filter.Eq(x => x.AppGuid, token.AppGuid),
             });
 
             Coll.ReplaceOne(filter, token, new UpdateOptions {IsUpsert = true});

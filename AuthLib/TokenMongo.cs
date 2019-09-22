@@ -10,10 +10,7 @@ namespace AuthLib
     public class TokenMongo
     {
         [BsonId]
-        public ObjectId Id;
-        public ObjectId UserId;
-        public string AppGuid;
-
+        public TokenMongoPrimaryKey Id;
         public string AccessToken;
         public DateTime AccessTokenExpires;
         public string RefreshToken;
