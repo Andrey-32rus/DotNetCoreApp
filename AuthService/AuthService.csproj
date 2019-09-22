@@ -11,8 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AuthLib\AuthLib.csproj" />
     <ProjectReference Include="..\ServiceUtils\ServiceUtils.csproj" />
     <ProjectReference Include="..\UtilsLib\UtilsLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
