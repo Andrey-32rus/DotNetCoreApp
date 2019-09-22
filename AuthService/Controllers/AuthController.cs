@@ -20,7 +20,7 @@ namespace AuthService.Controllers
             try
             {
                 var user = MongoUsers.FindUserByLogin(request.Login);
-                string passwordHash = CryptoUtils.GetSha512(request.Password);
+                string passwordHash = CryptoUtils.GetSha512Base64Encoded(request.Password);
                 if (user.PasswordHash == passwordHash)
                 {
                     DateTime now = DateTime.UtcNow;

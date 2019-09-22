@@ -12,7 +12,7 @@ namespace NUnitTestProject
         public void TestSha512()
         {
             string src = "asd12345";
-            string hash = CryptoUtils.GetSha512(src);
+            string hash = CryptoUtils.GetSha512Base64Encoded(src);
             Console.WriteLine(hash);
         }
     }
