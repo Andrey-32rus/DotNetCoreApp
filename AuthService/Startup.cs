@@ -40,6 +40,8 @@ namespace AuthService
 
             app.UseDisableHttp();
             app.UseMvc();
+
+            Console.WriteLine($"EnvVar: {AppConfig.EnvVar}");
         }
     }
 }

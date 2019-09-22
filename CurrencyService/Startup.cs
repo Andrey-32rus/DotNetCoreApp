@@ -53,6 +53,8 @@ namespace CurrencyService
             {
                 hubContext.Clients.All.SendAsync("CurrenciesUpdate", value.ToString());
             });
+
+            Console.WriteLine($"EnvVar: {AppConfig.EnvVar}");
         }
     }
 }

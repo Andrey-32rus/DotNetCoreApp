@@ -6,7 +6,7 @@ namespace UtilsLib
 {
     public static class AppConfig
     {
-        private static readonly string EnvVar = Environment.GetEnvironmentVariable("EnvVar");
+        public static string EnvVar { get; } = Environment.GetEnvironmentVariable("EnvVar");
         private static readonly IConfigurationRoot Config = new ConfigurationBuilder()
             .AddJsonFile($"appsettings.json", true)
             .AddJsonFile($"appsettings.{EnvVar}.json", true)
