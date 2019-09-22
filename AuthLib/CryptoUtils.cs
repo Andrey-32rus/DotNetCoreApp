@@ -30,11 +30,20 @@ namespace AuthLib
         public static string GetSha512(string source)
         {
             var bytes = Sha512.ComputeHash(Encoding.UTF8.GetBytes(source));
+            return Convert.ToBase64String(bytes);
+        }
 
-            StringBuilder hex = new StringBuilder(bytes.Length * 2);
-            foreach (byte b in bytes)
-                hex.AppendFormat("{0:x2}", b);
-            return hex.ToString();
+        public static string GuidToken()
+        {
+            List<byte> bytes = new List<byte>();
+
+            var guid = Guid.NewGuid().ToByteArray();
+            bytes.AddRange(guid);
+
+            //long dt = DateTime.UtcNow.ToBinary();
+            //bytes.AddRange(BitConverter.GetBytes(dt));
+
+            return Convert.ToBase64String(bytes.ToArray());
         }
     }
 }

@@ -16,5 +16,12 @@ namespace NUnitTestProject
             Assert.NotNull(token);
             Console.WriteLine(token);
         }
+
+        [Test]
+        public void GuidToken()
+        {
+            string token = CryptoUtils.GuidToken();
+            Console.WriteLine(token);
+        }
     }
 }
