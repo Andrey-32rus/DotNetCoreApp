@@ -67,7 +67,7 @@ namespace AuthService.Controllers
                     return StatusCode(400, null);
 
                 DateTime now = DateTime.UtcNow;
-                if (now > tokenModel.RefreshTokenExpires)
+                if (now >= tokenModel.RefreshTokenExpires)
                     return StatusCode(401, null);
 
                 tokenModel.AccessToken = CryptoUtils.GenerateGuidToken(10);
