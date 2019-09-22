@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuthLib;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
 using UtilsLib;
 
 namespace AuthService.Controllers
@@ -49,6 +50,7 @@ namespace AuthService.Controllers
             }
             catch (Exception e)
             {
+                MyLogger.Log(e.ToString(), LogLevel.Error, "Auth.Login");
                 return StatusCode(500, null);
             }
         }
