@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using JWT;
 using JWT.Algorithms;
 using JWT.Builder;
@@ -7,18 +8,20 @@ using JWT.Serializers;
 
 namespace AuthLib
 {
-    public class TokenUtils
+    public static class TokenUtils
     {
+        private static readonly IJwtAlgorithm Algorithm = new HMACSHA512Algorithm();
+        private static readonly RNGCryptoServiceProvider Rng = new RNGCryptoServiceProvider();
+
         public static string GenerateToken()
         {
-            string secret = Guid.NewGuid().ToString();
+            byte[] key = new byte[512];
+            Rng.GetNonZeroBytes(key);
 
             string token = new JwtBuilder()
-                .WithAlgorithm(new HMACSHA256Algorithm())
+                .WithAlgorithm(Algorithm)
                 .IssuedAt(DateTime.UtcNow)
-                .WithSecret(secret)
-                //.AddClaim("guid1", Guid.NewGuid().ToString())
-                //.AddClaim("guid2", Guid.NewGuid().ToString())
+                .WithSecret(key)
                 .Build();
 
             return token;
