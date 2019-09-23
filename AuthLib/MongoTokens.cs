@@ -29,5 +29,10 @@ namespace AuthLib
         {
             return Coll.FindSync(x => x.RefreshToken == refreshToken).FirstOrDefault();
         }
+
+        public static TokenMongo FindByAccessToken(string accessToken)
+        {
+            return Coll.FindSync(x => x.AccessToken == accessToken).FirstOrDefault();
+        }
     }
 }

@@ -57,11 +57,11 @@ namespace AuthService.Controllers
         }
 
         [HttpPost("Refresh")]
-        public ActionResult<AuthResponse> Refresh(RefreshRequest request)
+        public ActionResult<AuthResponse> Refresh(CheckTokenRequest request)
         {
             try
             {
-                var tokenModel = MongoTokens.FindByRefreshToken(request.RefreshToken);
+                var tokenModel = MongoTokens.FindByRefreshToken(request.Token);
 
                 if(tokenModel == null)
                     return StatusCode(400, null);
@@ -85,6 +85,32 @@ namespace AuthService.Controllers
             catch (Exception e)
             {
                 MyLogger.Log(e.ToString(), LogLevel.Error, "Auth.Refresh");
+                return StatusCode(500, null);
+            }
+        }
+
+        [HttpPost("CheckToken")]
+        public ActionResult<UserInfoResponse> CheckToken(CheckTokenRequest request)
+        {
+            try
+            {
+                var tokenModel = MongoTokens.FindByAccessToken(request.Token);
+
+                if (tokenModel == null)
+                    return StatusCode(400, null);
+
+                DateTime now = DateTime.UtcNow;
+                if (now >= tokenModel.AccessTokenExpires)
+                    return StatusCode(401, null);
+
+                return new UserInfoResponse
+                {
+                    UserId = tokenModel.Id.UserId.ToString(),
+                };
+            }
+            catch (Exception e)
+            {
+                MyLogger.Log(e.ToString(), LogLevel.Error, "Auth.CheckToken");
                 return StatusCode(500, null);
             }
         }

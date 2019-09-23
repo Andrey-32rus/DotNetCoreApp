@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 namespace AuthLib
 {
     [JsonObject]
-    public class RefreshRequest
+    public class CheckTokenRequest
     {
-        [JsonProperty(PropertyName = "RT")]
-        public string RefreshToken;
+        [JsonProperty(PropertyName = "TT")]
+        public string Token;
     }
 }
