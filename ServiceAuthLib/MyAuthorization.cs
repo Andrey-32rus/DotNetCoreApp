@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
+using AuthLib;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Driver;
-using MongoWrapper;
 using UtilsLib;
 
 namespace ServiceAuthLib
@@ -23,10 +23,16 @@ namespace ServiceAuthLib
         //private static readonly IMongoCollection<Token> MongoColl =
         //    MongoWrap.FromConfig("MongoConnection").GetCollection<Token>("Auth", "Tokens");
 
-        private static Token CheckToken(string accessToken)
+        private static UserInfoResponse CheckToken(string accessToken)
         {
-            HttpUtils.
-            return MongoColl.FindSync(x => x.AccessToken == accessToken).FirstOrDefault();
+            CheckTokenRequest req = new CheckTokenRequest {Token = accessToken};
+            var res = HttpUtils.Post<CheckTokenRequest, UserInfoResponse>("https://localhost:6001/api/auth/checktoken", req);
+            if (res.HttpResponseMessage.StatusCode == HttpStatusCode.OK && res.ResponseBody != null)
+            {
+                return res.ResponseBody;
+            }
+
+            return null;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -40,8 +46,8 @@ namespace ServiceAuthLib
                 if (headerVal.Length == 2 && headerVal[0] == "Bearer")
                 {
                     string token = headerVal[1];
-                    var tokenModel = FindToken(token);
-                    if (tokenModel != null && DateTime.UtcNow < tokenModel.AccessTokenExpires)
+                    var userInfo = CheckToken(token);
+                    if (userInfo != null)
                     {
                         return;
                     }
