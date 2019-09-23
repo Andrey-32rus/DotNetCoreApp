@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MongoWrapper;
+﻿using MongoWrapper;
 
-namespace AuthLib
+namespace AuthService.DAO
 {
     internal static class MongoDao
     {

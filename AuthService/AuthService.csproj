@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AuthLib\AuthLib.csproj" />
+    <ProjectReference Include="..\AuthContracts\AuthContracts.csproj" />
+    <ProjectReference Include="..\MongoWrapper\MongoWrapper.csproj" />
     <ProjectReference Include="..\ServiceUtils\ServiceUtils.csproj" />
     <ProjectReference Include="..\UtilsLib\UtilsLib.csproj" />
   </ItemGroup>
@@ -30,6 +31,11 @@
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MongoModels\" />
+    <Folder Include="DAO\" />
   </ItemGroup>
 
 </Project>

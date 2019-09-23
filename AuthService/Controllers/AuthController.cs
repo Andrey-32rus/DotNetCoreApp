@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuthLib;
+using AuthService.DAO;
+using AuthService.MongoModels;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 using UtilsLib;
@@ -36,9 +38,9 @@ namespace AuthService.Controllers
                         UserId = user.Id,
                         AppGuid = request.AppGuid,
                     },
-                    AccessToken = CryptoUtils.GenerateGuidToken(10),
+                    AccessToken = TokenUtils.GenerateGuidToken(10),
                     AccessTokenExpires = now.AddMinutes(5),
-                    RefreshToken = CryptoUtils.GenerateGuidToken(5),
+                    RefreshToken = TokenUtils.GenerateGuidToken(5),
                     RefreshTokenExpires = now.AddDays(30),
                 };
                 MongoTokens.ReplaceTokenByUserAndAppGuid(tokenModel);
@@ -70,9 +72,9 @@ namespace AuthService.Controllers
                 if (now >= tokenModel.RefreshTokenExpires)
                     return StatusCode(401, null);
 
-                tokenModel.AccessToken = CryptoUtils.GenerateGuidToken(10);
+                tokenModel.AccessToken = TokenUtils.GenerateGuidToken(10);
                 tokenModel.AccessTokenExpires = now.AddMinutes(5);
-                tokenModel.RefreshToken = CryptoUtils.GenerateGuidToken(5);
+                tokenModel.RefreshToken = TokenUtils.GenerateGuidToken(5);
                 tokenModel.RefreshTokenExpires = now.AddDays(30);
                 MongoTokens.ReplaceTokenByUserAndAppGuid(tokenModel);
                 return new AuthResponse

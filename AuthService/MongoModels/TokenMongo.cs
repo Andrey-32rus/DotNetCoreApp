@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MongoDB.Bson;
+using AuthLib;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace AuthLib
+namespace AuthService.MongoModels
 {
     [BsonIgnoreExtraElements]
     public class TokenMongo

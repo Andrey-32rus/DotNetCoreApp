@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace AuthLib
+namespace AuthService
 {
-    public static class CryptoUtils
+    public static class TokenUtils
     {
-        private static readonly SHA512 Sha512 = SHA512.Create();
-
-        public static string GetSha512Base64Encoded(string source)
-        {
-            var bytes = Sha512.ComputeHash(Encoding.UTF8.GetBytes(source));
-            return Convert.ToBase64String(bytes);
-        }
-
         public static string GenerateGuidToken(int countOfGuids = 1)
         {
             List<byte> bytes = new List<byte>(16 * countOfGuids);

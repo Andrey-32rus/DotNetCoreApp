@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AuthLib;
+using AuthService.MongoModels;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace AuthLib
+namespace AuthService.DAO
 {
     public static class MongoUsers
     {
