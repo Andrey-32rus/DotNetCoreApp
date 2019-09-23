@@ -15,11 +15,14 @@ namespace NUnitTestProject
             CheckTokenRequest req = new CheckTokenRequest
             {
                 Token =
-                    "Azm43nqYqUqNXnULTCC/OWba4ZSEroNMkCLkpTPjPlTFiNoKaA8GQKIEpmXzeCa/C7I" +
-                    "zkXln30qNXye/MiWU+0wE9W/HmIpNmrXg10FFr59H6NO9tnGKRJ2hkVIOWNjh1JCNWHL/vkCMg3vwK" +
-                    "kHPmcd4ZUMgxmJOqSultqnV5WAo8Zsp+TEZTITiUVanJz8/OK5AvlhfhUyivjNB9A5i+g==",
+                    "Q0+cqGhDHEKA/3yPavkGKASoYygqB59BiCzjVSU8+WiLj" +
+                    "TvjdRZ6S6UdaVaReK6DErkGbfpAmkKZ119s2TvzBoHoIbOX" +
+                    "foZKpDxP9ABN1OSYljJxIx/cRrR7DwPHSjbjTxQkVPauN0ikea" +
+                    "e8gr3FoVJGC7P8KPBFidBI/RjjIMFEVR1hc9vERac6oHafz7bGXB" +
+                    "DQRlySEUCh8HXeBGT0SA==",
             };
-            string res = HttpUtils.Post("https://localhost:6001/api/auth/checktoken", req.ToJson());
+            var res = HttpUtils.Post<CheckTokenRequest, UserInfoResponse>("https://localhost:6001/api/auth/checktoken", req);
+            Console.WriteLine(res.ResponseBody.ToJson());
         }
     }
 }
