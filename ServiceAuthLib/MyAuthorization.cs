@@ -6,6 +6,7 @@ using Microsoft.Extensions.Primitives;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using MongoWrapper;
+using UtilsLib;
 
 namespace ServiceAuthLib
 {
@@ -19,11 +20,12 @@ namespace ServiceAuthLib
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
     public class MyAuthorization : Attribute, IAuthorizationFilter
     {
-        private static readonly IMongoCollection<Token> MongoColl =
-            MongoWrap.FromConfig("MongoConnection").GetCollection<Token>("Auth", "Tokens");
+        //private static readonly IMongoCollection<Token> MongoColl =
+        //    MongoWrap.FromConfig("MongoConnection").GetCollection<Token>("Auth", "Tokens");
 
-        private static Token FindToken(string accessToken)
+        private static Token CheckToken(string accessToken)
         {
+            HttpUtils.
             return MongoColl.FindSync(x => x.AccessToken == accessToken).FirstOrDefault();
         }
 
