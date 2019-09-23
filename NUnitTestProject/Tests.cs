@@ -56,7 +56,7 @@ namespace NUnitTestProject
         [Test]
         public void GetRequest()
         {
-            string json = NetUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
+            string json = HttpUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
             Console.WriteLine(json);
             Assert.IsNotNull(json);
         }

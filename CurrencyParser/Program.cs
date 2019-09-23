@@ -19,7 +19,7 @@ namespace CurrencyParser
             {
                 try
                 {
-                    string json = NetUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
+                    string json = HttpUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
                     Console.WriteLine($"Currecies Downloaded DT:{DateTime.Now}");
 
                     string jsonCurs = Fnc.JsonPath(json, "$.Valute.*");

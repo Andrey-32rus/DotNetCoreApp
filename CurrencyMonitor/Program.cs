@@ -19,7 +19,7 @@ namespace CurrencyMonitor
                 {
                     try
                     {
-                        var jsonCurs = NetUtils.Get("https://localhost:5001/api/currencies");
+                        var jsonCurs = HttpUtils.Get("https://localhost:5001/api/currencies");
                         var curs = JsonConvert.DeserializeObject<List<CurrencyResponse>>(jsonCurs);
                         Utils.WriteCurrenciesToConsole(curs);
                     }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace CurrencyLib
+namespace UtilsLib
 {
-    public static class NetUtils
+    public static class HttpUtils
     {
         private static readonly HttpClient Client = new HttpClient();
 
