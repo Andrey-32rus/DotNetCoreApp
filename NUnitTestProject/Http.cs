@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AuthLib;
 using NUnit.Framework;
 using UtilsLib;
 
