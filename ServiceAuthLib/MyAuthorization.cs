@@ -10,13 +10,6 @@ using UtilsLib;
 
 namespace ServiceAuthLib
 {
-    [BsonIgnoreExtraElements]
-    public class Token
-    {
-        public string AccessToken;
-        public DateTime AccessTokenExpires;
-    }
-
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
     public class MyAuthorization : Attribute, IAuthorizationFilter
     {
