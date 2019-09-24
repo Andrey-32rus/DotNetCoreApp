@@ -13,9 +13,6 @@ namespace ServiceAuthLib
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
     public class MyAuthorization : Attribute, IAuthorizationFilter
     {
-        //private static readonly IMongoCollection<Token> MongoColl =
-        //    MongoWrap.FromConfig("MongoConnection").GetCollection<Token>("Auth", "Tokens");
-
         private static UserInfoResponse CheckToken(string accessToken)
         {
             CheckTokenRequest req = new CheckTokenRequest {Token = accessToken};
