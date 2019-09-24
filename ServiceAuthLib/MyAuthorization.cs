@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using AuthLib;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
@@ -13,6 +14,11 @@ namespace ServiceAuthLib
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
     public class MyAuthorization : Attribute, IAuthorizationFilter
     {
+        public static UserInfoResponse GetUserInfo(HttpContext httpContext)
+        {
+            return (UserInfoResponse) httpContext.Items["UserInfo"];
+        }
+
         private static UserInfoResponse CheckToken(string accessToken)
         {
             CheckTokenRequest req = new CheckTokenRequest {Token = accessToken};
@@ -39,6 +45,7 @@ namespace ServiceAuthLib
                     var userInfo = CheckToken(token);
                     if (userInfo != null)
                     {
+                        context.HttpContext.Items.Add("UserInfo", userInfo);
                         return;
                     }
                 }

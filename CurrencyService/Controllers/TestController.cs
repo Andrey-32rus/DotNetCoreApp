@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AuthLib;
 using Microsoft.AspNetCore.Mvc;
 using ServiceAuthLib;
 
@@ -27,9 +28,9 @@ namespace CurrencyService.Controllers
 
         [MyAuthorization]
         [HttpGet("Auth")]
-        public ActionResult Auth()
+        public ActionResult<UserInfoResponse> Auth()
         {
-            return Ok();
+            return MyAuthorization.GetUserInfo(HttpContext);
         }
 
         [HttpGet("StatusCode")]
