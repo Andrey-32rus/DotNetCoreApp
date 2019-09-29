@@ -41,6 +41,13 @@ namespace CurrencyService
 
             app.UseDisableHttp();
 
+            app.UseCors(config =>
+            {
+                config
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            });
             app.UseMvc();
             app.UseSignalR(route =>
             {
