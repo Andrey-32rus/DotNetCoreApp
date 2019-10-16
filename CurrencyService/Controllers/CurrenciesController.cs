@@ -12,31 +12,30 @@ namespace CurrencyService.Controllers
     public class CurrenciesController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<CurrencyResponse> Get()
+        public ActionResult<IEnumerable<CurrencyResponse>> Get()
         {
             try
             {
-                return MongoDao.GetAllCurrencies().Select(x => new CurrencyResponse(x));
+                return MongoDao.GetAllCurrencies().Select(x => new CurrencyResponse(x)).ToArray();
             }
-            catch (Exception e)
+            catch
             {
-                return null;
+                return StatusCode(500);
             }
         }
 
         [HttpGet("{id}")]
-        public CurrencyResponse Get(int id)
+        public ActionResult<CurrencyResponse> Get(int id)
         {
             try
             {
                 var mongo = MongoDao.GetCurrencyById(id);
                 return new CurrencyResponse(mongo);
             }
-            catch (Exception e)
+            catch
             {
-                return null;
+                return StatusCode(500);
             }
-           
         }
     }
 }
