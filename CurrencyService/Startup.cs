@@ -39,7 +39,7 @@ namespace CurrencyService
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseDisableHttp();
+            //app.UseDisableHttp();
 
             app.UseCors(config =>
             {
