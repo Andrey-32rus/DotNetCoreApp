@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MongoWrapper\MongoWrapper.csproj" />
-    <ProjectReference Include="..\RedisWrapper\RedisWrapper.csproj" />
+    <PackageReference Include="MongoWrapper" Version="1.0.0" />
+    <PackageReference Include="RedisWrapper" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

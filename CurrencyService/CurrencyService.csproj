@@ -12,12 +12,12 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.4" />
+    <PackageReference Include="ServiceAuthLib" Version="1.0.0" />
+    <PackageReference Include="ServiceUtils" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyLib\CurrencyLib.csproj" />
-    <ProjectReference Include="..\ServiceAuthLib\ServiceAuthLib.csproj" />
-    <ProjectReference Include="..\ServiceUtils\ServiceUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

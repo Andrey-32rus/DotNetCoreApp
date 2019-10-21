@@ -16,15 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AuthContracts" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AuthContracts\AuthContracts.csproj" />
-    <ProjectReference Include="..\MongoWrapper\MongoWrapper.csproj" />
-    <ProjectReference Include="..\ServiceUtils\ServiceUtils.csproj" />
-    <ProjectReference Include="..\UtilsLib\UtilsLib.csproj" />
+    <PackageReference Include="MongoWrapper" Version="1.0.0" />
+    <PackageReference Include="ServiceUtils" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
