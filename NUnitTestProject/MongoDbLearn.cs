@@ -42,6 +42,8 @@ namespace NUnitTestProject
             
             using (var session = client.StartSession())
             {
+                Stopwatch trx = new Stopwatch();
+                trx.Start();
                 session.WithTransaction((ses, token) =>
                 {
                     try
@@ -56,6 +58,8 @@ namespace NUnitTestProject
                         throw;
                     }
                 });
+                trx.Stop();
+                Console.WriteLine($"TRX: {trx.ElapsedMilliseconds}ms");
                 //session.StartTransaction();
                 //try
                 //{
