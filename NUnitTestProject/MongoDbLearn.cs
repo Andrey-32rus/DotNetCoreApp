@@ -82,24 +82,24 @@ namespace NUnitTestProject
         [Test]
         public void TrxTest()
         {
-            var connSettings = new MongoClientSettings
-            {
-                ConnectionMode = ConnectionMode.ReplicaSet,
-                ReadPreference = ReadPreference.Primary,
-                ReplicaSetName = "rs0",
-                Servers = new MongoServerAddress[]
-                {
-                    new MongoServerAddress("localhost", 27017), 
-                }
-            };
-            
-            //var client = new MongoClient("mongodb://localhost:27017");
-            var client = new MongoClient(connSettings);
+            //var connSettings = new MongoClientSettings
+            //{
+            //    ConnectionMode = ConnectionMode.ReplicaSet,
+            //    ReadPreference = ReadPreference.Primary,
+            //    ReplicaSetName = "rs0",
+            //    Servers = new MongoServerAddress[]
+            //    {
+            //        new MongoServerAddress("localhost", 27017), 
+            //    }
+            //};
+            //var client = new MongoClient(connSettings);
+            var client = new MongoClient("mongodb://localhost:27017/?replicaSet=rs0&readPreference=primary");
+
             Task.Run(() => Trx(client));
             //Thread.Sleep(1000);
             Task.Run(() => Trx(client));
 
-            Thread.Sleep(500);
+            Thread.Sleep(5000);
         }
     }
 }
