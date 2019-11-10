@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace NUnitTestProject
 
         public void Trx(MongoClient client)
         {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
             var col = client.GetDatabase("Test").GetCollection<TransactionsModel>("Transactions");
 
             var filter = Builders<TransactionsModel>.Filter.Eq(x => x.Id, ObjectId.Parse("5dc6ecb496709870ec8ffbdf"));
@@ -43,7 +46,7 @@ namespace NUnitTestProject
                 {
                     try
                     {
-                        col.UpdateOne(ses, filter, lockUpdate);
+                        var obj = col.FindOneAndUpdate(ses, filter, lockUpdate);
                         col.UpdateOne(ses, filter, update);
                         return true;
                     }
@@ -68,6 +71,8 @@ namespace NUnitTestProject
                 //}
                 //session.CommitTransaction();
             }
+            timer.Stop();
+            Console.WriteLine($"TIMER: {timer.ElapsedMilliseconds}ms");
         }
 
         [Test]
@@ -87,10 +92,10 @@ namespace NUnitTestProject
             //var client = new MongoClient("mongodb://localhost:27017");
             var client = new MongoClient(connSettings);
             Task.Run(() => Trx(client));
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             Task.Run(() => Trx(client));
 
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
         }
     }
 }
