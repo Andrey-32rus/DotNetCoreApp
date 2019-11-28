@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using CurrencyLib;
 using NUnit.Framework;
+using NUnitTestProject.Models;
 using UtilsLib;
 
 namespace NUnitTestProject
@@ -59,6 +61,17 @@ namespace NUnitTestProject
             string json = HttpUtils.Get("https://www.cbr-xml-daily.ru/daily_json.js");
             Console.WriteLine(json);
             Assert.IsNotNull(json);
+        }
+
+        [Test]
+        public void TestDictionary()
+        {
+            //(int first, int second)
+            //(int, int)
+            Dictionary<int, (int first, int second)> dict = new Dictionary<int, (int, int)>();
+            dict.Add(0, (5, 6));
+            Console.WriteLine(dict[0].first);
+            Console.WriteLine(dict[0].second);
         }
     }
 }
