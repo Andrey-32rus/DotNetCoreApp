@@ -101,5 +101,45 @@ namespace NUnitTestProject
 
             Thread.Sleep(5000);
         }
+
+        [Test]
+        public void Sum()
+        {
+            var wrap = new MongoWrap("mongodb://localhost:27017");
+            var col = wrap.GetCollection<RatingAggMongo>("Test", "RatingAgg");
+
+            var match = new BsonDocument
+            {
+                {
+                    "$match",
+                    new BsonDocument
+                    {
+                        {"user", 5}
+                    }
+                }
+            };
+            var group = new BsonDocument
+            {
+                {
+                    "$group",
+                    new BsonDocument
+                    {
+                        {"_id", "null"},
+                        {
+                            "total", new BsonDocument
+                            {
+                                {"$sum", "$Rating"}
+                            }
+                        }
+                    }
+                }
+            };
+
+
+            var definition = PipelineDefinition<RatingAggMongo, BsonDocument>.Create(match, group);
+            var doc = col.Aggregate(definition).Single();
+
+            long total = doc["total"].AsInt64;
+        }
     }
 }
