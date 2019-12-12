@@ -15,6 +15,13 @@ namespace NUnitTestProject
 {
     public class MongoDbLearn
     {
+        private MongoWrap wrap;
+
+        public MongoDbLearn()
+        {
+            wrap = new MongoWrap("mongodb://localhost:27017");
+        }
+
         [Test]
         public void ForkDocs()
         {
@@ -105,7 +112,6 @@ namespace NUnitTestProject
         [Test]
         public void Sum()
         {
-            var wrap = new MongoWrap("mongodb://localhost:27017");
             var col = wrap.GetCollection<RatingAggMongo>("Test", "RatingAgg");
 
             var match = new BsonDocument
@@ -140,6 +146,8 @@ namespace NUnitTestProject
             var doc = col.Aggregate(definition).Single();
 
             long total = doc["total"].AsInt64;
+
+            Assert.AreNotEqual(total, 0L);
         }
     }
 }
