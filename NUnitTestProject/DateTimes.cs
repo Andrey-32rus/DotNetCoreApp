@@ -15,5 +15,17 @@ namespace NUnitTestProject
 
             var dt = DateTime.UtcNow;
         }
+
+        [Test]
+        public void Substract()
+        {
+            var dt = DateTimeOffset.Now;
+
+            var local = dt.ToLocalTime();
+            var utc = dt.ToUniversalTime();
+
+            var sub = local - utc;
+            Assert.AreEqual(sub.TotalMilliseconds, 0d);
+        }
     }
 }
