@@ -149,5 +149,14 @@ namespace NUnitTestProject
 
             Assert.AreNotEqual(total, 0L);
         }
+
+        [Test]
+        public void Date()
+        {
+            var col = wrap.GetCollection<DateMongo>("Test", "DateColl");
+            DateTime dt = DateTime.Now;
+            DateMongo obj = new DateMongo {Dt = dt};
+            col.InsertOne(obj);
+        }
     }
 }
