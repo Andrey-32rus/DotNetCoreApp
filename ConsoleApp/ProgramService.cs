@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ConsoleApp.ProgramEntryPoint
+namespace ConsoleApp
 {
-    public class ProgramDI : IProgram
+    public class ProgramService
     {
         public void Main(string[] args)
         {

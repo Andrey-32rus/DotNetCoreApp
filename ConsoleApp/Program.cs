@@ -1,5 +1,4 @@
 ﻿using System;
-using ConsoleApp.ProgramEntryPoint;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,7 +9,7 @@ namespace ConsoleApp
     {
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddSingleton<IProgram, ProgramDI>();
+            services.AddSingleton<ProgramService>();
         }
 
         static void ConfigureAppConfiguration(HostBuilderContext host, IConfigurationBuilder configuration)
@@ -30,7 +29,7 @@ namespace ConsoleApp
                 .ConfigureServices(ConfigureServices)
                 .Build();
 
-            var program = host.Services.GetRequiredService<IProgram>();
+            var program = host.Services.GetRequiredService<ProgramService>();
             program.Main(args);
 
             //host.Run();
