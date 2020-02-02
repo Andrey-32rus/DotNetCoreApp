@@ -1,8 +1,8 @@
 ﻿using System;
+using ALogger;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NLog.Extensions.Logging;
 
 namespace ConsoleApp
 {
@@ -11,6 +11,7 @@ namespace ConsoleApp
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
             services.AddSingleton<ProgramService>();
+            services.AddSingleton<ALog>(new ALog("ConsoleApp"));
         }
 
         static void ConfigureAppConfiguration(HostBuilderContext host, IConfigurationBuilder configuration)
@@ -28,7 +29,6 @@ namespace ConsoleApp
                 .UseEnvironment(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
                 .ConfigureAppConfiguration(ConfigureAppConfiguration)
                 .ConfigureServices(ConfigureServices)
-                .ConfigureLogging(logBuilder => logBuilder.AddNLog())
                 .Build();
 
             var program = host.Services.GetRequiredService<ProgramService>();
