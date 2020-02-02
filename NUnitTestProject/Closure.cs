@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using NUnit.Framework;
 
 namespace NUnitTestProject
 {
@@ -13,6 +14,7 @@ namespace NUnitTestProject
             return fnc.Invoke(left, right);
         }
 
+        [Test]
         public void ClosureDisAsm()
         {
             int x = 3;
