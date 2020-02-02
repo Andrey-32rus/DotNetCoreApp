@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace ConsoleApp
 {
@@ -10,6 +11,7 @@ namespace ConsoleApp
     {
         private IConfiguration Configuration;
         private IHostEnvironment Host;
+        private ILogger<ProgramService> Logger;
 
         public ProgramService(IConfiguration cfg, IHostEnvironment host)
         {

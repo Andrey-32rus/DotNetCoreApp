@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLog.Extensions.Logging;
 
 namespace ConsoleApp
 {
@@ -27,6 +28,7 @@ namespace ConsoleApp
                 .UseEnvironment(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
                 .ConfigureAppConfiguration(ConfigureAppConfiguration)
                 .ConfigureServices(ConfigureServices)
+                .ConfigureLogging(logBuilder => logBuilder.AddNLog())
                 .Build();
 
             var program = host.Services.GetRequiredService<ProgramService>();
