@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,15 @@ namespace WeatherService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton(svcColl =>
+            {
+                HealthCheckContainer hc = new HealthCheckContainer(() =>
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(5));//5 сек прогрева
+                    Console.WriteLine("Warmed Up");
+                });
+                return hc;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +55,10 @@ namespace WeatherService
             {
                 endpoints.MapControllers();
             });
+
+
+            var hc = app.ApplicationServices.GetRequiredService<HealthCheckContainer>();
+            hc.WarmUp();//start warmup
         }
     }
 }
