@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ServiceUtils.Middleware;
 
 namespace WeatherService
 {
@@ -37,6 +38,7 @@ namespace WeatherService
             }
 
             //app.UseHttpsRedirection();
+            app.UseDisableHttp();
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>
