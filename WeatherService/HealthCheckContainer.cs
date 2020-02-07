@@ -35,7 +35,7 @@ namespace WeatherService
             lock (syncRoot)
             {
                 if (isWarmUpStarted == true)
-                    throw new Exception("сервис уже валиден, неверное действие");
+                    throw new Exception("прогрев уже был запущен");
 
                 Task.Run(WarmingUp);
 
