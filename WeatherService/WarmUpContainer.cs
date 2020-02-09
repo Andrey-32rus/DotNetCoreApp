@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherService
 {
-    public sealed class HealthCheckContainer
+    public sealed class WarmUpContainer
     {
         private readonly Action warmUpAction;
         private readonly object syncRoot;
@@ -15,7 +15,7 @@ namespace WeatherService
         public bool IsValid { get; private set; }
 
 
-        public HealthCheckContainer(Action warmUpAction)
+        public WarmUpContainer(Action warmUpAction)
         {
             IsValid = false;
             syncRoot = new object();

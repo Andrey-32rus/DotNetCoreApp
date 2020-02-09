@@ -10,9 +10,9 @@ namespace WeatherService.Controllers
     [ApiController]
     public class HealthCheckController : ControllerBase
     {
-        private readonly HealthCheckContainer hc;
+        private readonly WarmUpContainer hc;
 
-        public HealthCheckController(HealthCheckContainer hc)
+        public HealthCheckController(WarmUpContainer hc)
         {
             this.hc = hc;
         }

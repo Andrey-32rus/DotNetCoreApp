@@ -30,7 +30,7 @@ namespace WeatherService
             services.AddControllers();
             services.AddSingleton(svcColl =>
             {
-                HealthCheckContainer hc = new HealthCheckContainer(() =>
+                WarmUpContainer hc = new WarmUpContainer(() =>
                 {
                     Thread.Sleep(TimeSpan.FromSeconds(5));//5 сек прогрева
                     Console.WriteLine("Warmed Up");
@@ -57,7 +57,7 @@ namespace WeatherService
             });
 
 
-            var hc = app.ApplicationServices.GetRequiredService<HealthCheckContainer>();
+            var hc = app.ApplicationServices.GetRequiredService<WarmUpContainer>();
             hc.WarmUp();//start warmup
         }
     }
