@@ -29,7 +29,7 @@ namespace WeatherService.Controllers
             }
             catch
             {
-                return StatusCode(500);
+                return StatusCode(500, null);
             }
         }
     }
