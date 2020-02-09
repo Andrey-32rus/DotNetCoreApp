@@ -25,16 +25,18 @@ namespace WeatherService
 
         public IConfiguration Configuration { get; }
 
+        private void WarmupLogic()
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(5));//5 сек прогрева
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddSingleton(svcColl =>
             {
-                WarmupContainer hc = new WarmupContainer(() =>
-                {
-                    Thread.Sleep(TimeSpan.FromSeconds(5));//5 сек прогрева
-                });
+                WarmupContainer hc = new WarmupContainer(WarmupLogic);
                 hc.WarmUp();
                 return hc;
             });
