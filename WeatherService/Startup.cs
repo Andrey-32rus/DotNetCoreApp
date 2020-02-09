@@ -30,6 +30,12 @@ namespace WeatherService
             Thread.Sleep(TimeSpan.FromSeconds(5));//5 сек прогрева
         }
 
+        private void StartWarmup(IServiceProvider sp)
+        {
+            var warmup = sp.GetRequiredService<WarmupContainer>();
+            warmup.WarmUp();
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -37,7 +43,6 @@ namespace WeatherService
             services.AddSingleton(svcColl =>
             {
                 WarmupContainer hc = new WarmupContainer(WarmupLogic);
-                hc.WarmUp();
                 return hc;
             });
         }
@@ -58,6 +63,8 @@ namespace WeatherService
             {
                 endpoints.MapControllers();
             });
+
+            StartWarmup(app.ApplicationServices);
         }
     }
 }
