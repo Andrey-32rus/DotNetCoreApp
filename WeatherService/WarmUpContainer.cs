@@ -12,12 +12,12 @@ namespace WeatherService
         private readonly object syncRoot;
         private bool isWarmUpStarted;
 
-        public bool IsValid { get; private set; }
+        public bool IsReady { get; private set; }
 
 
         public WarmUpContainer(Action warmUpAction)
         {
-            IsValid = false;
+            IsReady = false;
             syncRoot = new object();
             isWarmUpStarted = false;
 
@@ -27,7 +27,7 @@ namespace WeatherService
         private void WarmingUp()
         {
             warmUpAction.Invoke();
-            IsValid = true;
+            IsReady = true;
         }
 
         public void WarmUp()

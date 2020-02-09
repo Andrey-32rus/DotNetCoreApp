@@ -22,7 +22,7 @@ namespace WeatherService.Controllers
         {
             try
             {
-                if (hc.IsValid == false)
+                if (hc.IsReady == false)
                     return StatusCode(429, null);
 
                 return Ok();
