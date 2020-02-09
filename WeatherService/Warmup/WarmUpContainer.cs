@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace WeatherService
+namespace WeatherService.Warmup
 {
-    public sealed class WarmUpContainer
+    public sealed class WarmupContainer
     {
         private readonly Action warmUpAction;
         private readonly object syncRoot;
@@ -15,7 +12,7 @@ namespace WeatherService
         public bool IsReady { get; private set; }
 
 
-        public WarmUpContainer(Action warmUpAction)
+        public WarmupContainer(Action warmUpAction)
         {
             IsReady = false;
             syncRoot = new object();

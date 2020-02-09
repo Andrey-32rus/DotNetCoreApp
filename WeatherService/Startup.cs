@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ServiceUtils.Middleware;
+using WeatherService.Warmup;
 
 namespace WeatherService
 {
@@ -30,11 +31,11 @@ namespace WeatherService
             services.AddControllers();
             services.AddSingleton(svcColl =>
             {
-                WarmUpContainer hc = new WarmUpContainer(() =>
+                WarmupContainer hc = new WarmupContainer(() =>
                 {
                     Thread.Sleep(TimeSpan.FromSeconds(5));//5 сек прогрева
-                    Console.WriteLine("Warmed Up");
                 });
+                hc.WarmUp();
                 return hc;
             });
         }
@@ -55,10 +56,6 @@ namespace WeatherService
             {
                 endpoints.MapControllers();
             });
-
-
-            var hc = app.ApplicationServices.GetRequiredService<WarmUpContainer>();
-            hc.WarmUp();//start warmup
         }
     }
 }

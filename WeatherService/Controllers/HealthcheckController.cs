@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WeatherService.Warmup;
 
 namespace WeatherService.Controllers
 {
@@ -10,9 +11,9 @@ namespace WeatherService.Controllers
     [ApiController]
     public class HealthCheckController : ControllerBase
     {
-        private readonly WarmUpContainer hc;
+        private readonly WarmupContainer hc;
 
-        public HealthCheckController(WarmUpContainer hc)
+        public HealthCheckController(WarmupContainer hc)
         {
             this.hc = hc;
         }
