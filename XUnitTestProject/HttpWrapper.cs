@@ -45,7 +45,7 @@ namespace XUnitTestProject
             };
 
             var httpResponseMessage = httpClient.SendAsync(reqMessage).Result;
-            var responseBodyString = httpResponseMessage.Content.ToString();
+            var responseBodyString = httpResponseMessage.Content.ReadAsStringAsync().Result;
             var responseBody = JsonConvert.DeserializeObject<TResp>(responseBodyString);
             return new HttpResponse<TResp>
             {

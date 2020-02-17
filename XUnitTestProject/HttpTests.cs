@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
+using Contracts;
 using Xunit;
 
 namespace XUnitTestProject
 {
     public class HttpTests
     {
-        private HttpClient client;
+        private HttpWrapper wrapper;
 
         public HttpTests()
         {
@@ -17,15 +18,18 @@ namespace XUnitTestProject
             {
                 MaxConnectionsPerServer = int.MaxValue,
             };
-            client = new HttpClient(handler, true);
+            wrapper = new HttpWrapper(handler);
         }
 
         [Fact]
         public void PostJson()
         {
-            client.PostAsJsonAsync()
-            string yandex = client.GetStringAsync("https://yandex.ru").Result;
-            yandex = client.GetStringAsync("https://yandex.ru").Result;
+            SimpleContract body = new SimpleContract()
+            {
+                Field1 = "aaa",
+                Field2 = "bbb"
+            };
+            var result = wrapper.PostJson<SimpleContract, SimpleContract>("https://localhost:44327/weatherforecast", body);
         }
     }
 }
