@@ -18,19 +18,17 @@ namespace XUnitTestProject
     public class HttpWrapper : IDisposable, IAsyncDisposable
     {
         private bool isDisposed = false;
-        private HttpClient httpClient;
+        public HttpClient Client { get; }//геттер на случай если нужно без враппера обойтись
 
         public HttpWrapper(HttpMessageHandler handler, bool disposeHandler = true)
         {
-            httpClient = new HttpClient(handler, disposeHandler);
+            Client = new HttpClient(handler, disposeHandler);
         }
 
-        //геттер на случай если нужно без враппера обойтись
-        public HttpClient Client => httpClient;
 
         public string Get(string url)
         {
-            return httpClient.GetStringAsync(url).Result;
+            return Client.GetStringAsync(url).Result;
         }
 
         public HttpResponse<TResp> PostJson<TReq, TResp>(string url, TReq body, params (string name, string value)[] headers)
@@ -46,7 +44,7 @@ namespace XUnitTestProject
                 Content = content
             };
 
-            var httpResponseMessage = httpClient.SendAsync(reqMessage).Result;
+            var httpResponseMessage = Client.SendAsync(reqMessage).Result;
             var responseBodyString = httpResponseMessage.Content.ReadAsStringAsync().Result;
             var responseBody = JsonConvert.DeserializeObject<TResp>(responseBodyString);
             return new HttpResponse<TResp>
@@ -63,7 +61,7 @@ namespace XUnitTestProject
 
             if (disposing)
             {
-                httpClient.Dispose();
+                Client.Dispose();
                 // Free any other managed objects here.
                 //
             }
