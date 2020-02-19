@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using UtilsLib;
 
 namespace XUnitTestProject
 {
@@ -16,14 +15,18 @@ namespace XUnitTestProject
         public T ResponseBody;
     }
 
-    public class HttpWrapper
+    public class HttpWrapper : IDisposable, IAsyncDisposable
     {
+        private bool isDisposed = false;
         private HttpClient httpClient;
 
         public HttpWrapper(HttpMessageHandler handler, bool disposeHandler = true)
         {
             httpClient = new HttpClient(handler, disposeHandler);
         }
+
+        //геттер на случай если нужно без враппера обойтись
+        public HttpClient Client => httpClient;
 
         public string Get(string url)
         {
@@ -40,7 +43,6 @@ namespace XUnitTestProject
 
             HttpRequestMessage reqMessage = new HttpRequestMessage(HttpMethod.Post, url)
             {
-                Version = HttpVersion.Version11, 
                 Content = content
             };
 
@@ -52,6 +54,36 @@ namespace XUnitTestProject
                 HttpResponseMessage = httpResponseMessage,
                 ResponseBody = responseBody,
             };
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (isDisposed)
+                return;
+
+            if (disposing)
+            {
+                httpClient.Dispose();
+                // Free any other managed objects here.
+                //
+            }
+
+            isDisposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        public ValueTask DisposeAsync()
+        {
+            return new ValueTask(Task.Run(Dispose));
+        }
+
+        ~HttpWrapper()
+        {
+            Dispose(false);
         }
     }
 }

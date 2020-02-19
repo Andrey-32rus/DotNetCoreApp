@@ -1,24 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using Contracts;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace XUnitTestProject
 {
     public class HttpTests
     {
+        private readonly ITestOutputHelper testOutputHelper;
         private HttpWrapper wrapper;
 
-        public HttpTests()
+        public HttpTests(ITestOutputHelper testOutputHelper)
         {
-            HttpMessageHandler handler = new SocketsHttpHandler()
+            this.testOutputHelper = testOutputHelper;
+            SocketsHttpHandler handler = new SocketsHttpHandler()
             {
-                MaxConnectionsPerServer = int.MaxValue,
+                //максимальное кол-во соединений к серверу
+                MaxConnectionsPerServer = int.MaxValue, 
+
+                //время жизни соединения
+                PooledConnectionLifetime = TimeSpan.FromSeconds(10),
+
+                //время жизни соединения в случае бездействия.
+                //Если больше чем PooledConnectionLifetime, то не играет роли
+                PooledConnectionIdleTimeout = TimeSpan.FromSeconds(60), 
+
             };
             wrapper = new HttpWrapper(handler);
+        }
+
+        [Fact]
+        public void ManyRequests()
+        {
+            int countOfRequests = 500;
+
+
+            var timer = Stopwatch.StartNew();
+            List<Task> taskList = new List<Task>(countOfRequests);
+            for (int i = 0; i < countOfRequests; i++)
+            {
+                var task = wrapper.Client.GetAsync("https://www.cbr-xml-daily.ru/daily_json.js");
+                taskList.Add(task);
+            }
+            
+
+            Task.WaitAll(taskList.ToArray());
+
+            timer.Stop();
+            long time = timer.ElapsedMilliseconds;
+            testOutputHelper.WriteLine(time.ToString());
         }
 
         [Fact]
