@@ -14,7 +14,7 @@ namespace XUnitTestProject
     public class HttpTests
     {
         private readonly ITestOutputHelper testOutputHelper;
-        private HttpWrapper wrapper;
+        private HttpClient client;
 
         public HttpTests(ITestOutputHelper testOutputHelper)
         {
@@ -32,7 +32,7 @@ namespace XUnitTestProject
                 PooledConnectionIdleTimeout = TimeSpan.FromSeconds(60), 
 
             };
-            wrapper = new HttpWrapper(handler);
+            client = new HttpClient(handler);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace XUnitTestProject
             List<Task> taskList = new List<Task>(countOfRequests);
             for (int i = 0; i < countOfRequests; i++)
             {
-                var task = wrapper.Client.GetAsync("https://www.cbr-xml-daily.ru/daily_json.js");
+                var task = client.GetAsync("https://www.cbr-xml-daily.ru/daily_json.js");
                 taskList.Add(task);
             }
             
@@ -65,7 +65,8 @@ namespace XUnitTestProject
                 Field1 = "aaa",
                 Field2 = "bbb"
             };
-            var result = wrapper.PostJson<SimpleContract, SimpleContract>("https://localhost:44327/weatherforecast", body);
+            var response = client.PostAsJsonAsync("https://localhost:44327/weatherforecast", body).Result;
+            var result = response.Content.ReadAsAsync<SimpleContract>().Result;
         }
     }
 }
