@@ -69,19 +69,5 @@ namespace XUnitTestProject
             var response = client.PostAsJsonAsync("https://localhost:44327/weatherforecast", body).Result;
             var result = response.Content.ReadAsAsync<SimpleContract>().Result;
         }
-
-        private Task SleepAsync(TimeSpan timespan)
-        {
-            return Task.Run(() =>
-            {
-                Thread.Sleep(timespan);
-            });
-        }
-
-        [Fact]
-        public async Task TestAsync()
-        {
-            await SleepAsync(TimeSpan.FromSeconds(5));
-        }
     }
 }
