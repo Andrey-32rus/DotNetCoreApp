@@ -11,13 +11,13 @@ namespace ConsoleApp
 {
     public class ProgramService
     {
-        private IConfiguration configuration;
+        private IConfiguration cfg;
         private IHostEnvironment env;
         private ALog logger;
 
         public ProgramService(IConfiguration cfg, IHostEnvironment env, ALog logger)
         {
-            configuration = cfg;
+            this.cfg = cfg;
             this.env = env;
             this.logger = logger;
         }
