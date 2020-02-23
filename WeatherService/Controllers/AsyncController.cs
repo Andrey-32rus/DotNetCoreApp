@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using ALogger;
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
-using NLog;
-using NLog.Fluent;
 
 namespace WeatherService.Controllers
 {
