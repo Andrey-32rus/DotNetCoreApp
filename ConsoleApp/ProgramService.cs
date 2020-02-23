@@ -29,7 +29,6 @@ namespace ConsoleApp
 
             Console.WriteLine(env.ContentRootPath);
 
-            Thread.Sleep(TimeSpan.FromSeconds(1));
             Console.ReadLine();
         }
     }
