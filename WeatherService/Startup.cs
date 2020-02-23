@@ -41,7 +41,7 @@ namespace WeatherService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton(new ALog("Singleton"));
+            services.AddSingleton(new ALog("ALog"));
             services.AddSingleton(svcColl =>
             {
                 WarmupContainer hc = new WarmupContainer(WarmupLogic);
