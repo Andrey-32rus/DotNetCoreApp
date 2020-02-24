@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService", "WeatherService\WeatherService.csproj", "{0711C996-22ED-4A92-8A0C-C0DD72D3A7B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{47AAE6EA-1B22-41AF-80AF-851ACBF3A722}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{47AAE6EA-1B22-41AF-80AF-851ACBF3A722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{C4555A14-4945-43E6-BADB-C25439F2FF76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{C4555A14-4945-43E6-BADB-C25439F2FF76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
