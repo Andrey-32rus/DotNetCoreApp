@@ -158,5 +158,42 @@ namespace NUnitTestProject
             DateMongo obj = new DateMongo {Dt = dt};
             col.InsertOne(obj);
         }
+
+        [Test]
+        public void InsertIgnore()
+        {
+            var col = wrap.GetCollection<InsertIgnoreMongoModel>("Test", "IsertIgnore");
+            int countOfDays = 500000;
+            var now = DateTime.UtcNow.Date.AddDays((double)-countOfDays);
+            List<InsertIgnoreMongoModel> list = new List<InsertIgnoreMongoModel>(countOfDays);
+
+
+            for (int i = 0; i < countOfDays; i++)
+            {
+                var dt = now.AddDays(i);
+                InsertIgnoreMongoModel doc = new InsertIgnoreMongoModel
+                {
+                    Id = new InsertIgnoreMongoKey
+                    {
+                        UserId = Convert.ToUInt32(i),
+                        Dt = dt,
+                    },
+                    TransactionId = Convert.ToUInt64(i),
+                    IsUsed = false,
+                };
+
+                list.Add(doc);
+            }
+
+            try
+            {
+                col.InsertMany(list, new InsertManyOptions { IsOrdered = false });
+            }
+            catch (MongoBulkWriteException<InsertIgnoreMongoModel>)
+            {
+                //Console.WriteLine(e);
+            }
+
+        }
     }
 }
