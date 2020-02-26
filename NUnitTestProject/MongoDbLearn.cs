@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -194,6 +195,20 @@ namespace NUnitTestProject
                 //Console.WriteLine(e);
             }
 
+        }
+
+        [Test]
+        public void Group()
+        {
+            var col = wrap.GetCollection<InsertIgnoreMongoModel>("Test", "IsertIgnore");
+            var filter = Builders<InsertIgnoreMongoModel>.Filter.And(
+                Builders<InsertIgnoreMongoModel>.Filter.Eq(x => x.IsUsed, false),
+                Builders<InsertIgnoreMongoModel>.Filter.Gte(x => x.Id.Dt, new DateTime(2005,2,26,03,00,00))
+            );
+            var array = col.Find(filter).ToList();
+            var res = array.GroupBy(x => x.Id.UserId,
+                (key, enumerable) => new InsertIgnoreAggregated
+                    {UserId = key, Dates = enumerable.Select(x => x.Id.Dt).ToArray()}).ToArray();
         }
     }
 }

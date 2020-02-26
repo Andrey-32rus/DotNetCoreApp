@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace NUnitTestProject.Models
 {
     [BsonIgnoreExtraElements]
-    public struct InsertIgnoreMongoKey
+    public class InsertIgnoreMongoKey
     {
         [BsonElement("UI")]
         public uint UserId;
@@ -20,5 +20,11 @@ namespace NUnitTestProject.Models
         public ulong TransactionId;
         [BsonElement("IU")]
         public bool IsUsed;
+    }
+
+    public class InsertIgnoreAggregated
+    {
+        public uint UserId;
+        public DateTime[] Dates;
     }
 }
