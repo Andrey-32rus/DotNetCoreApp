@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,6 +21,12 @@ namespace XUnitTestProject
             }
 
             await Task.WhenAll(tasks);
+        }
+
+        [Fact]
+        public void SyncCallsAsync()
+        {
+            _ = WhenAll();
         }
     }
 }
