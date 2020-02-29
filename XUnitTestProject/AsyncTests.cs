@@ -10,18 +10,10 @@ namespace XUnitTestProject
 {
     public class AsyncTests
     {
-        private Task SleepAsync(TimeSpan timespan)
-        {
-            return Task.Run(() =>
-            {
-                Thread.Sleep(timespan);
-            });
-        }
-
         [Fact]
         public async Task TestAsync()
         {
-            await SleepAsync(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(5));
         }
 
         [Fact]
@@ -32,7 +24,7 @@ namespace XUnitTestProject
 
             }
 
-            await SleepAsync(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(5));
         }
     }
 }
