@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ALogger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -59,6 +60,9 @@ namespace WeatherService
 
             //app.UseHttpsRedirection();
             app.UseDisableHttp();
+
+            long maxContentLengthBytes = 1L * 1024;
+            app.UseMaxContentLength(maxContentLengthBytes, 413, "Max contentLength exceeded");
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>
