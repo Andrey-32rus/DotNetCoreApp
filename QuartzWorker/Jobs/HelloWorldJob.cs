@@ -19,7 +19,7 @@ namespace QuartzWorker.Jobs
             return TriggerBuilder.Create()
                 .StartNow()
                 .WithSimpleSchedule(x => x
-                    .WithIntervalInSeconds(10)
+                    .WithIntervalInSeconds(5)
                     .RepeatForever())
                 .Build();
         }

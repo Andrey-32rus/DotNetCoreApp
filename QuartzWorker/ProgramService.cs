@@ -20,6 +20,7 @@ namespace QuartzWorker
         private ALog logger;
 
         private IScheduler scheduler;
+        private readonly int threadsCount = 20;
 
         public ProgramService(IConfiguration cfg, IHostEnvironment env, ALog logger)
         {
@@ -30,18 +31,15 @@ namespace QuartzWorker
 
         public void Main(string[] args)
         {
-            Console.WriteLine("Hello World!!!");
             logger.Info($"Environment: {env.EnvironmentName}", "main");
-
-            Console.WriteLine(env.ContentRootPath);
+            logger.Info(env.ContentRootPath, "main");
 
             RunProgram().GetAwaiter().GetResult();
 
             Console.WriteLine($"{Environment.NewLine}Нажмите любую кнопку, чтобы завершить");
-
-
-
             Console.ReadLine();
+
+            ShutDown().GetAwaiter().GetResult();
         }
 
         private async Task RunProgram()
@@ -51,13 +49,15 @@ namespace QuartzWorker
                 // Grab the Scheduler instance from the Factory
                 NameValueCollection props = new NameValueCollection
                 {
-                    { "quartz.serializer.type", "binary" }
+                    {"quartz.serializer.type", "binary"},
+                    {"quartz.threadPool.threadCount", threadsCount.ToString()},
                 };
                 StdSchedulerFactory factory = new StdSchedulerFactory(props);
                 scheduler = await factory.GetScheduler();
 
                 // and start it off
                 await scheduler.Start();
+                logger.Info($"Scheduler Started with {threadsCount} threads", "RunProgram");
 
                 List<IJobDescription> jobsList = new List<IJobDescription>()
                 {
