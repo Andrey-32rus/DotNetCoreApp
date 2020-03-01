@@ -52,7 +52,7 @@ namespace WeatherService
                 }
                 else
                 {
-                    //context.Response.StatusCode = 400;
+                    context.Response.StatusCode = statusCode;
                     await context.Response.WriteAsync(text);
                 }
             }
