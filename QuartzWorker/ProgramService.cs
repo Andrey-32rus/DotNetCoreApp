@@ -16,8 +16,8 @@ namespace QuartzWorker
     public class ProgramService
     {
         private IConfiguration cfg;
-        private IHostEnvironment env;
-        private ALog logger;
+        private readonly IHostEnvironment env;
+        private readonly ALog logger;
 
         private IScheduler scheduler;
         private readonly int threadsCount = 20;
