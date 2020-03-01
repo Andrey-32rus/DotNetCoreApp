@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using ALogger;
@@ -61,8 +62,9 @@ namespace WeatherService
             //app.UseHttpsRedirection();
             app.UseDisableHttp();
 
-            long maxContentLengthBytes = 1L * 1024;
-            app.UseMaxContentLength(maxContentLengthBytes, 413, "Max contentLength exceeded");
+            long maxContentLengthBytes = 1;
+            string maxContentLengthText = "Maximal contentLength exceeded";
+            app.UseMaxContentLength(maxContentLengthBytes, (int)HttpStatusCode.RequestEntityTooLarge, maxContentLengthText);
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>
