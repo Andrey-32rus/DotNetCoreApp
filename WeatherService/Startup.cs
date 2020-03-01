@@ -63,8 +63,8 @@ namespace WeatherService
             app.UseDisableHttp();
 
             long maxContentLengthBytes = 1;
-            string maxContentLengthText = "Maximal contentLength exceeded";
-            app.UseMaxContentLength(maxContentLengthBytes, (int)HttpStatusCode.RequestEntityTooLarge, maxContentLengthText);
+            //string maxContentLengthText = "Maximal contentLength exceeded";
+            app.UseMaxContentLength(maxContentLengthBytes, (int)HttpStatusCode.RequestEntityTooLarge, string.Empty);
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>
