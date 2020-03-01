@@ -4,6 +4,7 @@ using System.Text;
 
 namespace XUnitTestProject.Models
 {
+    [Serializable]
     public class RefModel
     {
         public int Int1;
@@ -17,6 +18,7 @@ namespace XUnitTestProject.Models
         public decimal Decimal2;
     }
 
+    [Serializable]
     public struct ValueModel
     {
         public int Int1;
