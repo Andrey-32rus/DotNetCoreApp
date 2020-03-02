@@ -14,11 +14,9 @@ namespace QuartzWorker
     {
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            
+            var configuration = host.Configuration;
             services.AddSingleton<QuartzSchedulerService>();
-            services.AddOptions();
-            services.Configure<QuartzConfiguration>(host.Configuration.GetSection(nameof(QuartzConfiguration)));
-
+            services.AddOptions<QuartzConfiguration>().Bind(configuration.GetSection(nameof(QuartzConfiguration)));
 
             //Logger
             services.AddSingleton<ALog>(new ALog("QuartzWorker"));
