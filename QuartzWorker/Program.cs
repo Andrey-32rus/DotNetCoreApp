@@ -2,6 +2,9 @@
 using ALogger;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Quartz.Spi;
+using QuartzWorker.Jobs;
+using QuartzWorker.Jobs.Utils;
 
 namespace QuartzWorker
 {
@@ -10,7 +13,15 @@ namespace QuartzWorker
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
             services.AddSingleton<ProgramService>();
-            services.AddSingleton<ALog>(new ALog("ConsoleApp"));
+
+            //Logger
+            services.AddSingleton<ALog>(new ALog("QuartzWorker"));
+
+            //Quartz
+            services.AddSingleton<IJobFactory, JobFactory>();
+
+            //Jobs
+            services.AddSingleton<HelloWorldJob>();
         }
 
         static void Main(string[] args)

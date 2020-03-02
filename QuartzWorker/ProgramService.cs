@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Quartz;
 using Quartz.Impl;
+using Quartz.Spi;
 using QuartzWorker.Jobs;
 
 namespace QuartzWorker
@@ -18,15 +19,17 @@ namespace QuartzWorker
         private IConfiguration cfg;
         private readonly IHostEnvironment env;
         private readonly ALog logger;
+        private readonly IJobFactory jobFactory;
 
         private IScheduler scheduler;
         private readonly int threadsCount = 20;
 
-        public ProgramService(IConfiguration cfg, IHostEnvironment env, ALog logger)
+        public ProgramService(IConfiguration cfg, IHostEnvironment env, ALog logger, IJobFactory jobFactory)
         {
             this.cfg = cfg;
             this.env = env;
             this.logger = logger;
+            this.jobFactory = jobFactory;
         }
 
         public void Main(string[] args)
@@ -54,6 +57,7 @@ namespace QuartzWorker
                 };
                 StdSchedulerFactory factory = new StdSchedulerFactory(props);
                 scheduler = await factory.GetScheduler();
+                scheduler.JobFactory = jobFactory;
 
                 // and start it off
                 await scheduler.Start();

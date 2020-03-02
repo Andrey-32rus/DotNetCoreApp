@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using ALogger;
 using Quartz;
 
 namespace QuartzWorker.Jobs
@@ -23,14 +24,21 @@ namespace QuartzWorker.Jobs
                     .RepeatForever())
                 .Build();
         }
+    }
 
-        [DisallowConcurrentExecution]
-        protected class HelloWorldJob : IJob
+    [DisallowConcurrentExecution]
+    public class HelloWorldJob : IJob
+    {
+        private readonly ALog logger;
+
+        public HelloWorldJob(ALog logger)
         {
-            public async Task Execute(IJobExecutionContext context)
-            {
-                await Console.Out.WriteLineAsync("Hello World !!!");
-            }
+            this.logger = logger;
+        }
+
+        public async Task Execute(IJobExecutionContext context)
+        {
+            await Task.Run(() => logger.Info("Hello World !!!", "HelloWorldJob"));
         }
     }
 }
