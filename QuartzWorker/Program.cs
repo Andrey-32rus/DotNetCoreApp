@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ALogger;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quartz.Spi;
@@ -12,7 +14,9 @@ namespace QuartzWorker
     {
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddSingleton<ProgramService>();
+            var asd = host.Configuration.GetValue<QuartzConfiguration>("QuartzConfiguration");
+            services.AddSingleton<QuartzSchedulerService>();
+            services.AddOptions<QuartzConfiguration>();
 
             //Logger
             services.AddSingleton<ALog>(new ALog("QuartzWorker"));
@@ -24,15 +28,18 @@ namespace QuartzWorker
             services.AddSingleton<HelloWorldJob>();
         }
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var host = Host.CreateDefaultBuilder(args)
                 .UseEnvironment(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
                 .ConfigureServices(ConfigureServices)
                 .Build();
 
-            var program = host.Services.GetRequiredService<ProgramService>();
-            program.Main(args);
+            var quartz = host.Services.GetRequiredService<QuartzSchedulerService>();
+
+            await quartz.RunProgram();
+            Console.ReadLine();
+            await quartz.ShutDown();
         }
     }
 }
