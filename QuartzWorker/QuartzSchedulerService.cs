@@ -22,9 +22,11 @@ namespace QuartzWorker
         private readonly IHostEnvironment env;
         private readonly ALog logger;
         private readonly IJobFactory jobFactory;
-        private readonly QuartzConfiguration qaCfg;
+        private readonly IOptions<QuartzConfiguration> qaCfg;
 
         private IScheduler scheduler;
+
+        private int SchedulerThreadsCount => qaCfg.Value.ThreadsCount;
 
         public QuartzSchedulerService(IConfiguration cfg, IHostEnvironment env, ALog logger, IJobFactory jobFactory, IOptions<QuartzConfiguration> qaCfg)
         {
@@ -32,7 +34,7 @@ namespace QuartzWorker
             this.env = env;
             this.logger = logger;
             this.jobFactory = jobFactory;
-            this.qaCfg = qaCfg.Value;
+            this.qaCfg = qaCfg;
         }
 
         public async Task RunProgram()
@@ -43,7 +45,7 @@ namespace QuartzWorker
                 NameValueCollection props = new NameValueCollection
                 {
                     {"quartz.serializer.type", "binary"},
-                    {"quartz.threadPool.threadCount", qaCfg.ThreadsCount.ToString()},
+                    {"quartz.threadPool.threadCount", SchedulerThreadsCount.ToString()},
                 };
                 StdSchedulerFactory factory = new StdSchedulerFactory(props);
                 scheduler = await factory.GetScheduler();
@@ -61,7 +63,7 @@ namespace QuartzWorker
 
                 // and start it off
                 await scheduler.Start();
-                logger.Info($"Scheduler Started with {qaCfg.ThreadsCount} threads", "RunProgram");
+                logger.Info($"Scheduler Started with {SchedulerThreadsCount} threads", "RunProgram");
             }
             catch (SchedulerException se)
             {
