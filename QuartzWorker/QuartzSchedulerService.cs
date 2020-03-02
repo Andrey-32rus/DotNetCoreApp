@@ -67,7 +67,7 @@ namespace QuartzWorker
             }
             catch (SchedulerException se)
             {
-                await Console.Error.WriteLineAsync(se.ToString());
+                logger.Error(se.ToString(), "RunProgram");
             }
         }
 
@@ -79,7 +79,7 @@ namespace QuartzWorker
             }
             catch (SchedulerException se)
             {
-                await Console.Error.WriteLineAsync(se.ToString());
+                logger.Error(se.ToString(), "RunProgram");
             }
         }
     }
