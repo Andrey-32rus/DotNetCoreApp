@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
+using QuartzUtilities;
 using QuartzWorker.Jobs;
 
 namespace QuartzWorker
@@ -22,7 +23,7 @@ namespace QuartzWorker
         private readonly IJobFactory jobFactory;
 
         private IScheduler scheduler;
-        private readonly int threadsCount = 20;
+        private readonly int threadsCount = 5;
 
         public ProgramService(IConfiguration cfg, IHostEnvironment env, ALog logger, IJobFactory jobFactory)
         {
@@ -59,10 +60,6 @@ namespace QuartzWorker
                 scheduler = await factory.GetScheduler();
                 scheduler.JobFactory = jobFactory;
 
-                // and start it off
-                await scheduler.Start();
-                logger.Info($"Scheduler Started with {threadsCount} threads", "RunProgram");
-
                 List<IJobDescription> jobsList = new List<IJobDescription>()
                 {
                     new HelloWorldJobDescriptor(),
@@ -72,6 +69,10 @@ namespace QuartzWorker
                 {
                     await scheduler.ScheduleJob(jobDescription.GetJob(), jobDescription.GetTrigger());
                 }
+
+                // and start it off
+                await scheduler.Start();
+                logger.Info($"Scheduler Started with {threadsCount} threads", "RunProgram");
             }
             catch (SchedulerException se)
             {

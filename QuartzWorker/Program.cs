@@ -3,6 +3,7 @@ using ALogger;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quartz.Spi;
+using QuartzUtilities;
 using QuartzWorker.Jobs;
 
 namespace QuartzWorker

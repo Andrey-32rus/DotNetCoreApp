@@ -1,6 +1,6 @@
 ﻿using Quartz;
 
-namespace QuartzWorker.Jobs
+namespace QuartzUtilities
 {
     public interface IJobDescription
     {
