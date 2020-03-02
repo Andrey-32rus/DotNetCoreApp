@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Quartz.Spi;
 
-namespace QuartzWorker.Jobs.Utils
+namespace QuartzWorker.Jobs
 {
     public class JobFactory : IJobFactory
     {

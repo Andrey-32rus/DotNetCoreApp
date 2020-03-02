@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quartz.Spi;
 using QuartzWorker.Jobs;
-using QuartzWorker.Jobs.Utils;
 
 namespace QuartzWorker
 {
