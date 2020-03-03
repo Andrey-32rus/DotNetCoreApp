@@ -18,8 +18,8 @@ namespace QuartzWorker
 {
     public class QuartzSchedulerService
     {
-        private IConfiguration cfg;
-        private readonly IHostEnvironment env;
+        //private IConfiguration cfg;
+        //private readonly IHostEnvironment env;
         private readonly ALog logger;
         private readonly IJobFactory jobFactory;
         private readonly IOptions<QuartzConfiguration> qaCfg;
@@ -28,10 +28,10 @@ namespace QuartzWorker
 
         private int SchedulerThreadsCount => qaCfg.Value.ThreadsCount;
 
-        public QuartzSchedulerService(IConfiguration cfg, IHostEnvironment env, ALog logger, IJobFactory jobFactory, IOptions<QuartzConfiguration> qaCfg)
+        public QuartzSchedulerService(ALog logger, IJobFactory jobFactory, IOptions<QuartzConfiguration> qaCfg)
         {
-            this.cfg = cfg;
-            this.env = env;
+            //this.cfg = cfg;
+            //this.env = env;
             this.logger = logger;
             this.jobFactory = jobFactory;
             this.qaCfg = qaCfg;
