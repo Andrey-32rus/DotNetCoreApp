@@ -37,6 +37,7 @@ namespace WeatherService.Controllers
             .ToArray();
         }
 
+        [Authorization]
         [HttpPost]
         public SimpleContract Post(SimpleContract request)
         {

@@ -42,7 +42,10 @@ namespace WeatherService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressMapClientErrors = true; //Выключает стандартное тело ответа при ошибках
+            });
             services.AddSingleton(new ALog("ALog"));
             services.AddSingleton(svcColl =>
             {
