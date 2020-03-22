@@ -42,9 +42,14 @@ namespace WeatherService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().ConfigureApiBehaviorOptions(options =>
+            var mvcBuilder = services.AddControllers();
+            mvcBuilder.ConfigureApiBehaviorOptions(options =>
             {
                 options.SuppressMapClientErrors = true; //Выключает стандартное тело ответа при ошибках
+            });
+            mvcBuilder.AddMvcOptions(opt =>
+            {
+                opt.RequireHttpsPermanent = true;
             });
             services.AddSingleton(new ALog("ALog"));
             services.AddSingleton(svcColl =>
@@ -63,7 +68,7 @@ namespace WeatherService
             }
 
             //app.UseHttpsRedirection();
-            app.UseDisableHttp();
+            //app.UseDisableHttp();
 
             long maxContentLength = 5 * 1024;
             //string maxContentLengthText = "Maximal contentLength exceeded";
