@@ -15,7 +15,7 @@ namespace WeatherService
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            context.Result = new StatusCodeResult(400);
+            context.Result = new UnauthorizedResult();
         }
     }
 }
