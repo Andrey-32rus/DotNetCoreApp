@@ -15,6 +15,7 @@ namespace WeatherService
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
+            context.HttpContext.Request.Headers.TryGetValue("Authorization", out StringValues authHeader);
             context.Result = new UnauthorizedResult();
         }
     }
