@@ -57,6 +57,10 @@ namespace WeatherService
                 WarmupContainer hc = new WarmupContainer(WarmupLogic);
                 return hc;
             });
+
+            services.AddHttpClient<SomeApiClient>();
+            //services.AddHttpClient();
+            //services.AddSingleton<SomeApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

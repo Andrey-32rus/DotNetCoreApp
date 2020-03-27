@@ -19,7 +19,7 @@ namespace WeatherService.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, SomeApiClient api)
         {
             _logger = logger;
         }
