@@ -11,6 +11,12 @@ namespace XUnitTestProject
     public class AsyncTests
     {
         [Fact]
+        public void TestMethod()
+        {
+            TestAsync().Wait();
+        }
+
+        [Fact]
         public async Task TestAsync()
         {
             await Task.Delay(TimeSpan.FromSeconds(5));
