@@ -35,7 +35,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quartz", "Quartz", "{33721F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ABA8907C-361F-4352-BC27-5C6E7E50FCC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadsStacks", "ThreadsStacks\ThreadsStacks.csproj", "{DE39ABAB-4485-44FE-8FC6-A16B1BAF6294}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadsStacks", "ThreadsStacks\ThreadsStacks.csproj", "{DE39ABAB-4485-44FE-8FC6-A16B1BAF6294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLibrary", "CommonLibrary\CommonLibrary.csproj", "{F2C92998-18D3-486C-8184-D306C9ECE971}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{DE39ABAB-4485-44FE-8FC6-A16B1BAF6294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE39ABAB-4485-44FE-8FC6-A16B1BAF6294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE39ABAB-4485-44FE-8FC6-A16B1BAF6294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C92998-18D3-486C-8184-D306C9ECE971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C92998-18D3-486C-8184-D306C9ECE971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C92998-18D3-486C-8184-D306C9ECE971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C92998-18D3-486C-8184-D306C9ECE971}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
