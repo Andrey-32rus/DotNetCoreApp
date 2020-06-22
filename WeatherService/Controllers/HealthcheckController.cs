@@ -12,12 +12,12 @@ namespace WeatherService.Controllers
     [ApiController]
     public class HealthCheckController : ControllerBase
     {
-        private readonly WarmupContainer hc;
+        private readonly IWarmup wu;
         private ALog logger;
 
-        public HealthCheckController(WarmupContainer hc, ALog logger)
+        public HealthCheckController(IWarmup wu, ALog logger)
         {
-            this.hc = hc;
+            this.wu = wu;
             this.logger = logger;
         }
 
@@ -26,7 +26,7 @@ namespace WeatherService.Controllers
         {
             try
             {
-                if (hc.IsReady == false)
+                if (wu.IsReady == false)
                     return StatusCode(429, null);
 
                 logger.Info("Healthcheck 200", "HealthCheckController");
