@@ -8,9 +8,10 @@ namespace WeatherService.Warmup
 {
     public class Warmup : WarmupBase
     {
-        protected override void WarmingUp()
+        protected override Task WarmingUp()
         {
             Thread.Sleep(TimeSpan.FromSeconds(2));
+            return Task.CompletedTask;
         }
     }
 }

@@ -12,15 +12,15 @@ namespace WeatherService.Warmup
         protected WarmupBase()
         {
             this.IsReady = false;
-            Task.Run(WarmUp);
+            _ = WarmUp();
         }
 
-        private void WarmUp()
+        private async Task WarmUp()
         {
-            this.WarmingUp();
+            await this.WarmingUp();
             this.IsReady = true;
         }
 
-        protected abstract void WarmingUp();
+        protected abstract Task WarmingUp();
     }
 }
