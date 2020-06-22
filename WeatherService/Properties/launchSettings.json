@@ -19,7 +19,6 @@
     },
     "WeatherService": {
       "commandName": "Project",
-      "commandLineArgs": "--environment \"Staging",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {

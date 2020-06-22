@@ -1,0 +1,1 @@
+dotnet WeatherService.dll --environment Staging
