@@ -6,13 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.12.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Protos\greet.proto">
-      <GrpcServices>Client</GrpcServices>
-    </None>
+    <PackageReference Include="protobuf-net" Version="2.4.6" />
   </ItemGroup>
 
 </Project>
