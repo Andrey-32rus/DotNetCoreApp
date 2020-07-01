@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using ServiceUtils.Middleware;
+using WeatherService.Filters;
 using WeatherService.Warmup;
 
 namespace WeatherService
@@ -43,11 +44,13 @@ namespace WeatherService
             {
                 options.SuppressMapClientErrors = true; //Выключает стандартное тело ответа при ошибках
             });
+            var alog = new ALog("ALog");
             mvcBuilder.AddMvcOptions(opt =>
             {
+                opt.Filters.Add(new ExceptionFilter(alog));
                 opt.RequireHttpsPermanent = true;
             });
-            services.AddSingleton(new ALog("ALog"));
+            services.AddSingleton(alog);
             services.AddSingleton<IWarmup, Warmup.Warmup>();
 
             services.AddHttpClient<SomeApiClient>();
