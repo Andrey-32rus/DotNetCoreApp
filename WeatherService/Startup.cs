@@ -47,7 +47,7 @@ namespace WeatherService
             var alog = new ALog("ALog");
             mvcBuilder.AddMvcOptions(opt =>
             {
-                opt.Filters.Add(new ExceptionFilter(alog));
+                opt.Filters.Add<ExceptionFilter>();
                 opt.RequireHttpsPermanent = true;
             });
             services.AddSingleton(alog);
