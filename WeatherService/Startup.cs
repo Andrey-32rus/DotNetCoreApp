@@ -44,13 +44,14 @@ namespace WeatherService
             {
                 options.SuppressMapClientErrors = true; //Выключает стандартное тело ответа при ошибках
             });
-            var alog = new ALog("ALog");
+
+            services.AddSingleton<ExceptionFilter>();
             mvcBuilder.AddMvcOptions(opt =>
             {
-                opt.Filters.Add<ExceptionFilter>();
+                opt.Filters.AddService<ExceptionFilter>();
                 opt.RequireHttpsPermanent = true;
             });
-            services.AddSingleton(alog);
+            services.AddSingleton(new ALog("ALog"));
             services.AddSingleton<IWarmup, Warmup.Warmup>();
 
             services.AddHttpClient<SomeApiClient>();

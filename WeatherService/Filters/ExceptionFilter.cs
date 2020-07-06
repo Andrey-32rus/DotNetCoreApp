@@ -19,14 +19,17 @@ namespace WeatherService.Filters
 
         public void OnException(ExceptionContext context)
         {
-            var exception = context.Exception;
-            if (exception is AggregateException e)
+            try
+            {
+                context.ExceptionDispatchInfo.Throw();
+            }
+            catch (AggregateException e)
             {
                 logger.Error(e.ToString(), null);
             }
-            else
+            catch (Exception e)
             {
-                logger.Error(exception.ToString(), null);
+                logger.Error(e.ToString(), null);
             }
 
             var res = new Contracts.SimpleContract {Field1 = "f1", Field2 = "f2"};
