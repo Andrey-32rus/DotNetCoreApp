@@ -41,11 +41,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLibrary", "CommonLibr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcService", "GrpcService\GrpcService.csproj", "{82750B9F-74DD-45F1-B093-F8683DCB27C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtobufTestConsole", "ProtobufTestConsole\ProtobufTestConsole.csproj", "{C133C00D-6920-4794-BCE5-6DEF133CB31E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtobufTestConsole", "ProtobufTestConsole\ProtobufTestConsole.csproj", "{C133C00D-6920-4794-BCE5-6DEF133CB31E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient", "GrpcClient\GrpcClient.csproj", "{C1198D3C-D510-45A4-A05B-C0C1E35B9F53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcClient", "GrpcClient\GrpcClient.csproj", "{C1198D3C-D510-45A4-A05B-C0C1E35B9F53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grpc", "Grpc", "{42B57265-EB67-4D57-B47F-ED937942BBB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jwt.Service", "Jwt.Service\Jwt.Service.csproj", "{FC335809-ECC6-4775-B055-10314C28C7E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +123,10 @@ Global
 		{C1198D3C-D510-45A4-A05B-C0C1E35B9F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1198D3C-D510-45A4-A05B-C0C1E35B9F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1198D3C-D510-45A4-A05B-C0C1E35B9F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC335809-ECC6-4775-B055-10314C28C7E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC335809-ECC6-4775-B055-10314C28C7E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC335809-ECC6-4775-B055-10314C28C7E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC335809-ECC6-4775-B055-10314C28C7E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
