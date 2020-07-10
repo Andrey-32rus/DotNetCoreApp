@@ -35,14 +35,20 @@ namespace Jwt.Service
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateAudience = false,
                         ValidateLifetime = false,
-                        
+
+                        ValidateAudience = true,
+
                         ValidateIssuer = true,
                         ValidIssuer = AuthOptions.ISSUER,
 
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+
+                        ValidAudiences = new string[]
+                        {
+                            "Jwt.Client"
+                        },
                     };
                 });
         }
