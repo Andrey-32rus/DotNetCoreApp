@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,12 +11,12 @@ namespace HttpClientLearning
         {
             services.AddHttpClient<MyHttpClient>().SetHandlerLifetime(TimeSpan.FromSeconds(1));
         }
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var host = Host.CreateDefaultBuilder(args).ConfigureServices(ConfigureServices).Build();
 
             var client = host.Services.GetRequiredService<MyHttpClient>();
-            client.Req(1000);
+            var res = await client.Req(100);
         }
     }
 }

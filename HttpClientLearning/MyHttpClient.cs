@@ -14,17 +14,19 @@ namespace HttpClientLearning
             this.client = client;
         }
 
-        public void Req(int count)
+        public async Task<List<string>> Req(int count)
         {
-            List<Task> tasks = new List<Task>(count);
+            List<string> contents = new List<string>(count);
+
             for (int i = 0; i < count; i++)
             {
-                var task = client.GetAsync("https://vk.com");
-                tasks.Add(task);
+                var task = client.GetAsync("https://www.cbr-xml-daily.ru/daily_json.js");
+                var respMessage = await task;
+                string content = await respMessage.Content.ReadAsStringAsync();
+                contents.Add(content);
             }
 
-            var resTask = Task.WhenAll(tasks);
-            resTask.Wait();
+            return contents;
         }
     }
 }
