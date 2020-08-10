@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ALogger;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Fluent;
 
 namespace ConsoleApp
 {
@@ -10,8 +15,15 @@ namespace ConsoleApp
     {
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddSingleton<ProgramService>();
+            services.AddHostedService<ProgramService>();
             services.AddSingleton<ALog>(new ALog("ConsoleApp"));
+
+            services.AddLogging(builder =>
+            {
+                builder.SetMinimumLevel(LogLevel.Warning);
+                if (host.HostingEnvironment.IsDevelopment() == false)
+                    builder.ClearProviders();
+            });
         }
 
         static void Main(string[] args)
@@ -21,8 +33,7 @@ namespace ConsoleApp
                 .ConfigureServices(ConfigureServices)
                 .Build();
 
-            var program = host.Services.GetRequiredService<ProgramService>();
-            program.Main(args);
+            host.Run();
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace ConsoleApp
 {
-    public class ProgramService
+    public class ProgramService : BackgroundService
     {
         private IConfiguration cfg;
         private IHostEnvironment env;
@@ -22,14 +22,17 @@ namespace ConsoleApp
             this.logger = logger;
         }
 
-        public void Main(string[] args)
+        public void Main()
         {
             Console.WriteLine("Hello World!!!");
             logger.Info($"Environment: {env.EnvironmentName}", "main");
 
             Console.WriteLine(env.ContentRootPath);
+        }
 
-            Console.ReadLine();
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            return Task.Run(Main, stoppingToken);
         }
     }
 }
