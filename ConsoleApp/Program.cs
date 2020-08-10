@@ -15,7 +15,8 @@ namespace ConsoleApp
     {
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddHostedService<ProgramService>();
+            services.AddHostedService<HostedService>();
+            //services.AddHostedService<ProgramService>();
             services.AddSingleton<ALog>(new ALog("ConsoleApp"));
 
             services.AddLogging(builder =>
