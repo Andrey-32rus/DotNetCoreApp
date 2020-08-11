@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using NLog.Fluent;
 
 namespace ConsoleApp
@@ -24,6 +25,7 @@ namespace ConsoleApp
                 builder.SetMinimumLevel(LogLevel.Warning);
                 if (host.HostingEnvironment.IsDevelopment() == false)
                     builder.ClearProviders();
+                builder.AddNLog();
             });
         }
 
