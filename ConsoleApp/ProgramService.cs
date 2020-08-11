@@ -25,11 +25,14 @@ namespace ConsoleApp
         public void Main()
         {
             logger.Info($"Environment: {env.EnvironmentName}", "main");
+            logger.Info($"ManagedThreadId: {Thread.CurrentThread.ManagedThreadId}", "main");
+            logger.Info($"{ThreadPool.ThreadCount}", "main");
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             Task.Run(() => Main(), stoppingToken);
+            logger.Info($"ManagedThreadId: {Thread.CurrentThread.ManagedThreadId}", "main");
             return Task.CompletedTask;
         }
     }
