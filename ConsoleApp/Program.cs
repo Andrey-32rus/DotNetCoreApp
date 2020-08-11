@@ -34,6 +34,10 @@ namespace ConsoleApp
             var host = Host.CreateDefaultBuilder(args)
                 .UseEnvironment(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
                 .ConfigureServices(ConfigureServices)
+                .UseConsoleLifetime(options =>
+                {
+                    options.SuppressStatusMessages = true;
+                })
                 .Build();
 
             host.Run();
