@@ -24,15 +24,13 @@ namespace ConsoleApp
 
         public void Main()
         {
-            Console.WriteLine("Hello World!!!");
             logger.Info($"Environment: {env.EnvironmentName}", "main");
-
-            Console.WriteLine(env.ContentRootPath);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            return Task.Run(Main, stoppingToken);
+            Task.Run(() => Main(), stoppingToken);
+            return Task.CompletedTask;
         }
     }
 }
