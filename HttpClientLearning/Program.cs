@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +10,14 @@ namespace HttpClientLearning
     {
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<MyHttpClient>().SetHandlerLifetime(TimeSpan.FromSeconds(1));
+            services.AddHttpClient<MyHttpClient>();
+            //    .ConfigurePrimaryHttpMessageHandler(() =>
+            //{
+            //    return new SocketsHttpHandler
+            //    {
+            //        PooledConnectionLifetime = TimeSpan.FromSeconds(30),
+            //    };
+            //});
         }
         static async Task Main(string[] args)
         {
