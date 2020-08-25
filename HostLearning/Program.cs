@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.Hosting;
 
 namespace HostLearning
 {
@@ -6,7 +7,14 @@ namespace HostLearning
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var host = Host.CreateDefaultBuilder(args)
+                .UseConsoleLifetime(options =>
+                {
+                    options.SuppressStatusMessages = true;
+                })
+                .Build();
+
+            host.Run();
         }
     }
 }
