@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 
 namespace HostLearning
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var host = Host.CreateDefaultBuilder(args)
                 .UseConsoleLifetime(options =>
@@ -14,7 +15,7 @@ namespace HostLearning
                 })
                 .Build();
 
-            host.Run();
+            await host.RunAsync().ConfigureAwait(false);
         }
     }
 }
