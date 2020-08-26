@@ -12,7 +12,8 @@ namespace HostLearning
                 .UseConsoleLifetime(options =>
                 {
                     options.SuppressStatusMessages = true;
-                })
+                }).
+                ConfigureServices(Startup.ConfigureServices)
                 .Build();
 
             await host.RunAsync().ConfigureAwait(false);
