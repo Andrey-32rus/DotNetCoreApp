@@ -10,13 +10,16 @@ namespace HostLearning.Services
     public class MainService : BackgroundService
     {
         private readonly IHostApplicationLifetime applicationLifetime;
-        public MainService(IHostApplicationLifetime applicationLifetime)
+        private readonly IHostEnvironment hostEnvironment;
+        public MainService(IHostApplicationLifetime applicationLifetime, IHostEnvironment hostEnvironment)
         {
             this.applicationLifetime = applicationLifetime;
+            this.hostEnvironment = hostEnvironment;
         }
 
         private async Task Main()
         {
+            await Console.Out.WriteLineAsync($"Environment: {hostEnvironment.EnvironmentName}").ConfigureAwait(false);
             await Console.Out.WriteLineAsync("Hello World").ConfigureAwait(false);
             applicationLifetime.StopApplication();
         }
