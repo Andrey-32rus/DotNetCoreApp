@@ -20,7 +20,6 @@ namespace HostLearning.Services
         private async Task Main()
         {
             await Console.Out.WriteLineAsync($"Environment: {hostEnvironment.EnvironmentName}").ConfigureAwait(false);
-            await Console.Out.WriteLineAsync("Hello World").ConfigureAwait(false);
             applicationLifetime.StopApplication();
         }
 
