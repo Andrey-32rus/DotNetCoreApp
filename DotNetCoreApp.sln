@@ -57,7 +57,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jwt", "Jwt", "{62C753F4-E0E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestSharpLearning", "RestSharpLearning\RestSharpLearning.csproj", "{5BE3F0B9-5350-4307-8E1F-6189EEDEE1D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostLearning", "HostLearning\HostLearning.csproj", "{99243DC9-0094-47DD-AC02-EEB2D61E14C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostLearning", "HostLearning\HostLearning.csproj", "{99243DC9-0094-47DD-AC02-EEB2D61E14C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRLearning", "SignalRLearning\SignalRLearning.csproj", "{FDFE133E-552F-4F36-897F-0FA5F438D91C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +155,10 @@ Global
 		{99243DC9-0094-47DD-AC02-EEB2D61E14C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99243DC9-0094-47DD-AC02-EEB2D61E14C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99243DC9-0094-47DD-AC02-EEB2D61E14C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDFE133E-552F-4F36-897F-0FA5F438D91C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFE133E-552F-4F36-897F-0FA5F438D91C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFE133E-552F-4F36-897F-0FA5F438D91C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFE133E-552F-4F36-897F-0FA5F438D91C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
