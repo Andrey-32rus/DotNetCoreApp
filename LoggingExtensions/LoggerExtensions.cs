@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Logging;
 
@@ -6,12 +7,12 @@ namespace LoggingExtensions
 {
     public static class LoggerExtensions
     {
-        public static void Info(this ILogger logger, string message, params (string key, object value)[] properties)
+        private static (string message, object[] args) PrepareArgs(string message, IList<(string key, object value)> properties)
         {
             StringBuilder sb = new StringBuilder(message);
-            object[] valuesOfProps = new object[properties.Length];
+            object[] valuesOfProps = new object[properties.Count];
 
-            for (var i = 0; i < properties.Length; i++)
+            for (var i = 0; i < properties.Count; i++)
             {
                 var key = properties[i].key;
                 var value = properties[i].value;
@@ -19,7 +20,13 @@ namespace LoggingExtensions
                 valuesOfProps[i] = value;
             }
 
-            logger.LogInformation(sb.ToString(), valuesOfProps);
+            return (sb.ToString(), valuesOfProps);
+        }
+
+        public static void Info(this ILogger logger, string message, params (string key, object value)[] properties)
+        {
+            var (resMessage, args) = PrepareArgs(message, properties);
+            logger.LogInformation(resMessage, args);
         }
     }
 }
