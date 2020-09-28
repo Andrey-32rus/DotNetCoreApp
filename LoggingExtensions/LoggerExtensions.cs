@@ -14,10 +14,8 @@ namespace LoggingExtensions
 
             for (var i = 0; i < properties.Count; i++)
             {
-                var key = properties[i].key;
-                var value = properties[i].value;
-                sb.Append($" {{{key}}}");
-                valuesOfProps[i] = value;
+                sb.Append($" {{{properties[i].key}}}");
+                valuesOfProps[i] = properties[i].value;
             }
 
             return (sb.ToString(), valuesOfProps);
