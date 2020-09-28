@@ -28,6 +28,7 @@ namespace ILoggerLearning.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             logger.Info($"WeatherForecastController called", ("UserId", 1));
+            logger.LogInformation("WeatherForecastController called by user {UserId}", 1);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
