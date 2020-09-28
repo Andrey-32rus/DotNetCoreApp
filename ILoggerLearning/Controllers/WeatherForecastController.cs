@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LoggingExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -26,7 +27,8 @@ namespace ILoggerLearning.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            logger.LogCritical($"WeatherForecastController called");
+            var userProp = ("UserId", 1);
+            logger.Info($"WeatherForecastController called", userProp);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
