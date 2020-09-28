@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 
 namespace ILoggerLearning
 {
@@ -26,12 +27,12 @@ namespace ILoggerLearning
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddLogging();
-            //services.AddLogging(builder =>
-            //{
-
-            //});
-
+            services.AddLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                logging.AddNLog();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
