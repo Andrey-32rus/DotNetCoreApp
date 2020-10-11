@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace CommonLibrary
 {
-    public interface IClone<T>
+    public interface IClone<out T> where T : class
     {
-        IClone<T> GetClone();
+        T GetClone();
     }
 
     public class Cloneable : IClone<Cloneable>
@@ -24,7 +24,7 @@ namespace CommonLibrary
             this.field = clone.field;
         }
 
-        public IClone<Cloneable> GetClone()
+        public Cloneable GetClone()
         {
             return new Cloneable(this);
         }
