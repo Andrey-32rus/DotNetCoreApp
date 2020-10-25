@@ -17,16 +17,14 @@ namespace HostLearning.Services
             this.hostEnvironment = hostEnvironment;
         }
 
-        private async Task Main()
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await Console.Out.WriteLineAsync($"Environment: {hostEnvironment.EnvironmentName}").ConfigureAwait(false);
-            applicationLifetime.StopApplication();
-        }
-
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            _ = Main();
-            return Task.CompletedTask;
+            await Console.Out.WriteLineAsync($"Environment: {hostEnvironment.EnvironmentName}");
+            while (true)
+            {
+                await Console.Out.WriteLineAsync($"ping");
+                await Task.Delay(TimeSpan.FromSeconds(1), stoppingToken);
+            }
         }
     }
 }
