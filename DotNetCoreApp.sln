@@ -65,7 +65,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ILoggerLearning", "ILoggerL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingExtensions", "LoggingExtensions\LoggingExtensions.csproj", "{A197E1EA-D2E2-4DC1-96D7-0E361B68039C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerService", "DockerService\DockerService.csproj", "{99DEE762-B9AF-4877-A5D8-02AC1EC526CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerService", "DockerService\DockerService.csproj", "{99DEE762-B9AF-4877-A5D8-02AC1EC526CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationNet5", "WebApplicationNet5\WebApplicationNet5.csproj", "{F6EF2450-F72D-41C8-B129-00872BCFDC96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,10 @@ Global
 		{99DEE762-B9AF-4877-A5D8-02AC1EC526CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99DEE762-B9AF-4877-A5D8-02AC1EC526CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99DEE762-B9AF-4877-A5D8-02AC1EC526CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6EF2450-F72D-41C8-B129-00872BCFDC96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6EF2450-F72D-41C8-B129-00872BCFDC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6EF2450-F72D-41C8-B129-00872BCFDC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6EF2450-F72D-41C8-B129-00872BCFDC96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
