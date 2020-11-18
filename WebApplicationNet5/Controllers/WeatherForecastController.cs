@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplicationNet5.Authorization;
 
 namespace WebApplicationNet5.Controllers
 {
+    [MyAuth(Role = "O")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using WebApplicationNet5.Authorization;
 using WebApplicationNet5.Healthchecks;
 
 namespace WebApplicationNet5
@@ -42,6 +43,7 @@ namespace WebApplicationNet5
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseMyAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
