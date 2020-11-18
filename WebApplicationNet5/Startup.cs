@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using WebApplicationNet5.Healthchecks;
 
 namespace WebApplicationNet5
 {
@@ -26,7 +28,7 @@ namespace WebApplicationNet5
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddHealthChecks();
+            services.AddHealthChecks().AddCheck<SimpleHealthCheck>("Simple");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +46,19 @@ namespace WebApplicationNet5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/hc");
+                var hcOptions = new HealthCheckOptions
+                {
+                    ResponseWriter = (httpCtx, hcReport) => Task.CompletedTask,
+
+                    AllowCachingResponses = false,
+                    ResultStatusCodes = new Dictionary<HealthStatus, int>
+                    {
+                        {HealthStatus.Healthy, 200},
+                        {HealthStatus.Degraded, 429},
+                        {HealthStatus.Unhealthy, 500},
+                    }
+                };
+                endpoints.MapHealthChecks("/hc", hcOptions);
             });
         }
     }
