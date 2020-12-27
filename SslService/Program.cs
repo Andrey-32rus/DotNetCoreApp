@@ -31,7 +31,8 @@ namespace SslService
                     });
                     opt.ConfigureHttpsDefaults(https =>
                     {
-                        var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "asd12345", @"D:\ssl\key.key");
+                        var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "asd12345",
+                            @"D:\ssl\key.key");
                         https.ServerCertificate = cert;
                     });
                 });
