@@ -18,23 +18,25 @@ namespace SslService
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+                webBuilder.ConfigureKestrel(opt =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(opt =>
+                    opt.ConfigureEndpointDefaults(listenOptions =>
                     {
-                        opt.ConfigureEndpointDefaults(listenOptions =>
-                        {
-                            listenOptions.UseHttps();
-                        });
-                        opt.ConfigureHttpsDefaults(https =>
-                        {
-                            var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "asd12345", @"D:\ssl\key.key");
-                            https.ServerCertificate = cert;
-                        });
+                        listenOptions.UseHttps();
+                    });
+                    opt.ConfigureHttpsDefaults(https =>
+                    {
+                        var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "asd12345", @"D:\ssl\key.key");
+                        https.ServerCertificate = cert;
                     });
                 });
+            });
+        }
+           
     }
 }
