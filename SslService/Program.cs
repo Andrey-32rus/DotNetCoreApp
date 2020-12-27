@@ -5,7 +5,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 
 namespace SslService
 {
@@ -21,6 +23,18 @@ namespace SslService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureKestrel(opt =>
+                    {
+                        opt.ConfigureEndpointDefaults(listenOptions =>
+                        {
+                            listenOptions.UseHttps();
+                        });
+                        opt.ConfigureHttpsDefaults(https =>
+                        {
+                            var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "12345", @"D:\ssl\key.key");
+                            https.ServerCertificate = cert;
+                        });
+                    });
                 });
     }
 }
