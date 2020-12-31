@@ -7,6 +7,7 @@ using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -29,23 +30,12 @@ namespace SslService
                 webBuilder.UseStartup<Startup>();
                 webBuilder.ConfigureKestrel(opt =>
                 {
-                    opt.Listen(IPAddress.Loopback, 5000);
-                    opt.Listen(IPAddress.Loopback, 5001, listOpt =>
+                    opt.ConfigureHttpsDefaults(https =>
                     {
-                        var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "asd12345",
-                            @"D:\ssl\key.key");
-                        listOpt.UseHttps(cert);
+                        //только pfx серт можно из файла достать. Это баг
+                        var cert = new X509Certificate2(@"D:\ssl\localhost.pfx", "12345");
+                        https.ServerCertificate = cert;
                     });
-                    //opt.ConfigureEndpointDefaults(listenOptions =>
-                    //{
-                    //    listenOptions.UseHttps();
-                    //});
-                    //opt.ConfigureHttpsDefaults(https =>
-                    //{
-                    //    var cert = X509Certificate2.CreateFromEncryptedPemFile(@"D:\ssl\cert.crt", "asd12345",
-                    //        @"D:\ssl\key.key");
-                    //    https.ServerCertificate = cert;
-                    //});
                 });
             });
         }
