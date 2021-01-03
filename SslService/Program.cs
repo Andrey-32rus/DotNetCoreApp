@@ -33,7 +33,7 @@ namespace SslService
                     opt.ConfigureHttpsDefaults(https =>
                     {
                         //только pfx серт можно из файла достать. Это баг
-                        var cert = new X509Certificate2(@"D:\ssl\localhost.pfx", "12345");
+                        var cert = new X509Certificate2(@"D:\ssl\localhost.pfx", "12345", X509KeyStorageFlags.Exportable);
                         https.ServerCertificate = cert;
                     });
                 });
