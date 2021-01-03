@@ -32,8 +32,11 @@ namespace SslService
                 {
                     opt.ConfigureHttpsDefaults(https =>
                     {
+                        var password = new NetworkCredential(string.Empty, "12345").SecurePassword;
+                        password.MakeReadOnly();
+
                         //только pfx серт можно из файла достать. Это баг
-                        var cert = new X509Certificate2(@"D:\ssl\localhost.pfx", "12345", X509KeyStorageFlags.Exportable);
+                        var cert = new X509Certificate2(@"D:\ssl\localhost.pfx", password, X509KeyStorageFlags.Exportable);
                         https.ServerCertificate = cert;
                     });
                 });
