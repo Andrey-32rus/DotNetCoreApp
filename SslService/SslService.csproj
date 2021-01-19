@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>82c36eac-cd8e-4d19-b039-d56a494ac6f2</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="cert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

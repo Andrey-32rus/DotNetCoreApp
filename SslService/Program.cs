@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Buffers.Text;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security;
@@ -36,7 +37,9 @@ namespace SslService
                         password.MakeReadOnly();
 
                         //только pfx серт можно из файла достать. Это баг
-                        var cert = new X509Certificate2(@"D:\ssl\localhost.pfx", password, X509KeyStorageFlags.Exportable);
+                        string certBase64 = File.ReadAllText("./cert");
+                        var certBytes = Convert.FromBase64String(certBase64);
+                        var cert = new X509Certificate2(certBytes);
                         https.ServerCertificate = cert;
                     });
                 });
