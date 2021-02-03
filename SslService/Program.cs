@@ -29,20 +29,20 @@ namespace SslService
             return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
-                webBuilder.ConfigureKestrel(opt =>
-                {
-                    opt.ConfigureHttpsDefaults(https =>
-                    {
-                        var password = new NetworkCredential(string.Empty, "12345").SecurePassword;
-                        password.MakeReadOnly();
+                //webBuilder.ConfigureKestrel(opt =>
+                //{
+                //    opt.ConfigureHttpsDefaults(https =>
+                //    {
+                //        var password = new NetworkCredential(string.Empty, "12345").SecurePassword;
+                //        password.MakeReadOnly();
 
-                        //только pfx серт можно из файла достать. Это баг
-                        string certBase64 = File.ReadAllText("./cert");
-                        var certBytes = Convert.FromBase64String(certBase64);
-                        var cert = new X509Certificate2(certBytes);
-                        https.ServerCertificate = cert;
-                    });
-                });
+                //        //только pfx серт можно из файла достать. Это баг
+                //        string certBase64 = File.ReadAllText("./cert");
+                //        var certBytes = Convert.FromBase64String(certBase64);
+                //        var cert = new X509Certificate2(certBytes);
+                //        https.ServerCertificate = cert;
+                //    });
+                //});
             });
         }
     }
