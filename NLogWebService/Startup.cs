@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NLog.LayoutRenderers;
+using NLog.Web;
 
 namespace NLogWebService
 {
@@ -28,6 +29,12 @@ namespace NLogWebService
         {
             services.AddControllers();
             services.AddHealthChecks();
+            services.AddLogging(cfg =>
+            {
+                cfg.ClearProviders();
+                cfg.SetMinimumLevel(LogLevel.Trace);
+                cfg.AddNLogWeb();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,4 +18,8 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.11.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LogSessions.NLogExtension\LogSessions.NLogExtension.csproj" />
+  </ItemGroup>
+
 </Project>
