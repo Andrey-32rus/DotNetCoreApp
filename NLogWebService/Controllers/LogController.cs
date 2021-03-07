@@ -12,7 +12,7 @@ namespace NLogWebService.Controllers
     [Route("[controller]")]
     public class LogController : ControllerBase
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         [HttpGet]
         public void Get()
