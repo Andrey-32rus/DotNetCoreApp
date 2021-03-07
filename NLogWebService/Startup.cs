@@ -33,6 +33,7 @@ namespace NLogWebService
             {
                 cfg.ClearProviders();
                 cfg.SetMinimumLevel(LogLevel.Trace);
+
                 cfg.AddNLogWeb();
             });
         }
