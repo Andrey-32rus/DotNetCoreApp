@@ -75,6 +75,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SslService", "SslService\Ss
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogWebService", "NLogWebService\NLogWebService.csproj", "{4A1FDC1B-E95A-4131-8995-FB969CFB80AF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NLog", "NLog", "{1D2EBBF0-DADB-49A3-9BB1-4B3996C896E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSessions.NLogExtension", "LogSessions.NLogExtension\LogSessions.NLogExtension.csproj", "{F1CA3AB7-FA1B-44AC-8D9F-F5915866C40B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +205,10 @@ Global
 		{4A1FDC1B-E95A-4131-8995-FB969CFB80AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A1FDC1B-E95A-4131-8995-FB969CFB80AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1FDC1B-E95A-4131-8995-FB969CFB80AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1CA3AB7-FA1B-44AC-8D9F-F5915866C40B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CA3AB7-FA1B-44AC-8D9F-F5915866C40B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CA3AB7-FA1B-44AC-8D9F-F5915866C40B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CA3AB7-FA1B-44AC-8D9F-F5915866C40B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,6 +227,7 @@ Global
 		{C1198D3C-D510-45A4-A05B-C0C1E35B9F53} = {42B57265-EB67-4D57-B47F-ED937942BBB2}
 		{FC335809-ECC6-4775-B055-10314C28C7E9} = {62C753F4-E0E3-44AE-9D1C-D4A88114C694}
 		{CBF46F9F-6B7D-460F-A2D0-B950B940F5EF} = {62C753F4-E0E3-44AE-9D1C-D4A88114C694}
+		{F1CA3AB7-FA1B-44AC-8D9F-F5915866C40B} = {1D2EBBF0-DADB-49A3-9BB1-4B3996C896E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4213393A-FFC3-46FF-B272-B013B168A0A5}
