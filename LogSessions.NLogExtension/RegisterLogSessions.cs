@@ -18,6 +18,9 @@ namespace LogSessions.NLogExtension
                 (logEventInfo, httpContext, loggingConfiguration)
                     =>
                 {
+                    if (httpContext == null)
+                        return null;
+
                     if(httpContext.Items.TryGetValue("LogStep", out object val))
                     {
                         int intVal = (int) val;
