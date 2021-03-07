@@ -17,7 +17,10 @@ namespace NLogWebService.Controllers
         [HttpGet]
         public void Get()
         {
-            logger.Info("log");
+            logger.Info()
+                .Message("log")
+                .Property("propInt", 1)
+                .Write();
         }
     }
 }
