@@ -21,6 +21,7 @@ using WeatherService.Warmup;
 
 namespace WeatherService
 {
+    //startup
     public class Startup
     {
         public Startup(IConfiguration configuration)
