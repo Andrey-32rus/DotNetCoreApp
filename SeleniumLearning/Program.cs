@@ -18,6 +18,8 @@ namespace SeleniumLearning
             var exePath = Path.GetFileName(driverPath);
 
             IWebDriver webDriver = new ChromeDriver(ChromeDriverService.CreateDefaultService(dirPath, exePath), options);
+            
+            webDriver.Manage().Window.Maximize();
             webDriver.Navigate().GoToUrl("https://yandex.ru");
 
             Console.ReadLine();
