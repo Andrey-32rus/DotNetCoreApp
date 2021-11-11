@@ -3,23 +3,28 @@ using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace SeleniumLearning;
-
-public class Program
+namespace SeleniumLearning
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        string driverPath = @"C:\SeleniumDrivers\chromedriver.exe";
-        ChromeOptions options = new ChromeOptions
+        public static void Main(string[] args)
         {
-        };
+            string driverPath = @"C:\SeleniumDrivers\chromedriver.exe";
+            ChromeOptions options = new ChromeOptions
+            {
+            };
 
-        var dirPath = Path.GetDirectoryName(driverPath);
-        var exePath = Path.GetFileName(driverPath);
+            var dirPath = Path.GetDirectoryName(driverPath);
+            var exePath = Path.GetFileName(driverPath);
 
-        IWebDriver webDriver = new ChromeDriver(ChromeDriverService.CreateDefaultService(dirPath, exePath), options);
-        webDriver.Navigate().GoToUrl("https://yandex.ru");
+            IWebDriver webDriver = new ChromeDriver(ChromeDriverService.CreateDefaultService(dirPath, exePath), options);
+            webDriver.Navigate().GoToUrl("https://yandex.ru");
 
-        Console.ReadLine();
+            Console.ReadLine();
+
+            webDriver.Quit();
+
+            Console.ReadLine();
+        }
     }
 }
