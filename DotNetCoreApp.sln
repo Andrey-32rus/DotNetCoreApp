@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestProject", "NUnitTestProject\NUnitTestProject.csproj", "{F13109CA-E91D-43CB-8875-EC064BD1F7C0}"
 EndProject
@@ -95,7 +95,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorWebAssemblyWithAspNet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{DB17F995-8E14-4E63-9274-16980FBB017D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumLearning", "SeleniumLearning\SeleniumLearning.csproj", "{051BE85F-7C40-4833-91B2-3F0F893E8641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumLearning", "SeleniumLearning\SeleniumLearning.csproj", "{051BE85F-7C40-4833-91B2-3F0F893E8641}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketService", "WebSocketService\WebSocketService.csproj", "{77EC9794-AA54-4055-B7D8-B3427CE0366C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +257,10 @@ Global
 		{051BE85F-7C40-4833-91B2-3F0F893E8641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{051BE85F-7C40-4833-91B2-3F0F893E8641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{051BE85F-7C40-4833-91B2-3F0F893E8641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EC9794-AA54-4055-B7D8-B3427CE0366C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EC9794-AA54-4055-B7D8-B3427CE0366C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EC9794-AA54-4055-B7D8-B3427CE0366C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EC9794-AA54-4055-B7D8-B3427CE0366C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
