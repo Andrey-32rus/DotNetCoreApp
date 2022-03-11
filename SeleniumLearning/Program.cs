@@ -13,9 +13,9 @@ namespace SeleniumLearning
             ChromeOptions options = new ChromeOptions
             {
                 //BinaryLocation = @"C:\Users\Andrey\AppData\Local\Yandex\YandexBrowser\Application\browser.exe",
-                //BinaryLocation = @"D:\yandexPortable\Browser\browser.exe",
+                BinaryLocation = @"D:\yandexPortable\Yandex.exe",
 
-                BinaryLocation = @"D:\GoogleChromePortable\GoogleChromePortable.exe",
+                //BinaryLocation = @"D:\GoogleChromePortable\GoogleChromePortable.exe",
                 //BinaryLocation = @"D:\GoogleChromePortable\App\Chrome-bin\chrome.exe",
             };
 
