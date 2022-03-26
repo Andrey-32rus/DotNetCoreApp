@@ -99,7 +99,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumLearning", "Seleniu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocketService", "WebSocketService\WebSocketService.csproj", "{77EC9794-AA54-4055-B7D8-B3427CE0366C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleNet6", "ConsoleNet6\ConsoleNet6.csproj", "{052C2846-89F1-4220-9702-2AF4D22A4201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleNet6", "ConsoleNet6\ConsoleNet6.csproj", "{052C2846-89F1-4220-9702-2AF4D22A4201}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcLib", "GrpcLib\GrpcLib.csproj", "{6A4374CD-7A72-470E-9109-E02678BB2F42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -267,6 +269,10 @@ Global
 		{052C2846-89F1-4220-9702-2AF4D22A4201}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{052C2846-89F1-4220-9702-2AF4D22A4201}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052C2846-89F1-4220-9702-2AF4D22A4201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -291,6 +297,7 @@ Global
 		{9B1A9964-9F29-4867-AF04-1AA548F036ED} = {B824C42E-CF4D-413A-9175-67728C3E64DD}
 		{2CFAF64F-BD42-4554-ABFB-9D7488302DE2} = {B824C42E-CF4D-413A-9175-67728C3E64DD}
 		{2DCF5E50-8955-41E3-BE68-91030F734FC9} = {B824C42E-CF4D-413A-9175-67728C3E64DD}
+		{6A4374CD-7A72-470E-9109-E02678BB2F42} = {42B57265-EB67-4D57-B47F-ED937942BBB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4213393A-FFC3-46FF-B272-B013B168A0A5}

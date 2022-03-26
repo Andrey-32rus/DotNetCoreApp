@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
-using GrpcService;
+using GreeterService;
 
 namespace GrpcClient
 {
