@@ -114,6 +114,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleClientConsole", "Orac
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oracle", "Oracle", "{964C39C7-3691-4DF4-A89A-93F9376654B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgresqlClientConsole", "PostgresqlClientConsole\PostgresqlClientConsole.csproj", "{79E71C6B-0918-42B8-9868-A7CCA9EA55EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Postgresql", "Postgresql", "{633A032B-8A1E-4AE7-82B6-AC115A9D5453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -292,6 +296,10 @@ Global
 		{417C3F1F-40DA-4E0A-ACC0-0E6DA7808614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{417C3F1F-40DA-4E0A-ACC0-0E6DA7808614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{417C3F1F-40DA-4E0A-ACC0-0E6DA7808614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E71C6B-0918-42B8-9868-A7CCA9EA55EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E71C6B-0918-42B8-9868-A7CCA9EA55EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E71C6B-0918-42B8-9868-A7CCA9EA55EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E71C6B-0918-42B8-9868-A7CCA9EA55EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -318,6 +326,7 @@ Global
 		{2DCF5E50-8955-41E3-BE68-91030F734FC9} = {B824C42E-CF4D-413A-9175-67728C3E64DD}
 		{6A4374CD-7A72-470E-9109-E02678BB2F42} = {42B57265-EB67-4D57-B47F-ED937942BBB2}
 		{417C3F1F-40DA-4E0A-ACC0-0E6DA7808614} = {964C39C7-3691-4DF4-A89A-93F9376654B4}
+		{79E71C6B-0918-42B8-9868-A7CCA9EA55EA} = {633A032B-8A1E-4AE7-82B6-AC115A9D5453}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4213393A-FFC3-46FF-B272-B013B168A0A5}
