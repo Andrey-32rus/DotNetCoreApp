@@ -1,7 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Func(null);
+Console.WriteLine("Hello World!");
+Console.ReadLine();
 
-void Func(string str)
-{
-    Console.WriteLine(str);
-}
+//void Func(string str)
+//{
+//    Console.WriteLine(str);
+//}

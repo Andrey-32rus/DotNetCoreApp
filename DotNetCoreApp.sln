@@ -101,7 +101,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocketService", "WebSock
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleNet6", "ConsoleNet6\ConsoleNet6.csproj", "{052C2846-89F1-4220-9702-2AF4D22A4201}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcLib", "GrpcLib\GrpcLib.csproj", "{6A4374CD-7A72-470E-9109-E02678BB2F42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcLib", "GrpcLib\GrpcLib.csproj", "{6A4374CD-7A72-470E-9109-E02678BB2F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net452Console", "Net452Console\Net452Console.csproj", "{D24F9245-113A-4535-BF2F-26AC5CAD5247}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -273,6 +275,10 @@ Global
 		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A4374CD-7A72-470E-9109-E02678BB2F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24F9245-113A-4535-BF2F-26AC5CAD5247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24F9245-113A-4535-BF2F-26AC5CAD5247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24F9245-113A-4535-BF2F-26AC5CAD5247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24F9245-113A-4535-BF2F-26AC5CAD5247}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
