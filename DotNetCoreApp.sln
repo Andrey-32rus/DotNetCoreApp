@@ -103,7 +103,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleNet6", "ConsoleNet6\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcLib", "GrpcLib\GrpcLib.csproj", "{6A4374CD-7A72-470E-9109-E02678BB2F42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net452Console", "Net452Console\Net452Console.csproj", "{D24F9245-113A-4535-BF2F-26AC5CAD5247}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net452Console", "Net452Console\Net452Console.csproj", "{D24F9245-113A-4535-BF2F-26AC5CAD5247}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68F43E9F-5D03-478C-ABAC-63899D47B440}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
