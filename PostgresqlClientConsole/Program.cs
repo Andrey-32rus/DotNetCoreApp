@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Npgsql;
 
+//cn str
 string connStr = "Host=localhost;Database=database1;Username=postgres;Password=postgres;Persist Security Info=True";
 var conn = new NpgsqlConnection(connStr);
 await using var cmd = new NpgsqlCommand("SELECT * FROM public.tbl", conn);
