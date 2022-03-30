@@ -3,6 +3,7 @@
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
+//connection string
 Console.WriteLine("Hello, World!");
 await using var conn = new OracleConnection();
 await using var cmd = new OracleCommand("call", conn);
