@@ -2,6 +2,7 @@
 
 namespace WebApiOwin.Controllers
 {
+    [MyAuthorization]
     public class ExampleController : ApiController
     {
         [HttpGet]
