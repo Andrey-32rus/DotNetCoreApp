@@ -10,11 +10,20 @@ namespace WebApiOwin
 {
     public class MyAuthorizationAttribute : AuthorizeAttribute
     {
-        public override void OnAuthorization(HttpActionContext actionContext)
+        protected override bool IsAuthorized(HttpActionContext actionContext)
         {
-            base.OnAuthorization(actionContext);
+            if (actionContext.Request.Headers.TryGetValues("Authorization", out var values))
+            {
+                var header = values.First().Split(' ').ToArray();
+                if (header[0] == "Basic")
+                {
+                    string base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes("asd:asd"));
+                    if (header[1] == base64)
+                        return true;
+                }
+            }
 
-            HandleUnauthorizedRequest(actionContext);
+            return false;
         }
     }
 }
